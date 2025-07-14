@@ -1,20 +1,34 @@
+'use client';
+import { useState } from 'react';
+import MiniNavbar from '@/app/components/miniNavBar/MiniNavbar';
+import { AnimatePresence } from 'framer-motion';
+
 export default function Navbar() {
 
+    const [miniNav, setMiniNav] = useState(false);
+
+    const open = () => setMiniNav(true); 
+    const close = () => setMiniNav(false); 
+
     return (
-        <div className="navbar bg-base-100 shadow-lg">
+        <>
+        <div className="navbar bg-base-100 shadow-lg sticky top-0 z-50">
             <div className="flex-none">
-                <button className="btn btn-square btn-ghost">
+                <button 
+                    className="btn btn-square btn-ghost"
+                    onClick={() => miniNav ? close() : open()}
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block h-5 w-5 stroke-current"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg>
                 </button>
             </div>
             <div className="navbar-start">
                 <a href='/'className="btn btn-ghost text-xl">Eric's Portfolio</a>
             </div>
-            <div className="navbar-center hidden lg:flex gap-8">
+            { !miniNav && <div className="navbar-center hidden :flex gap-8">
                 <a href='/about' className="btn btn-ghost text-l">About</a>
                 <a href='/projects' className="btn btn-ghost text-l">Projects</a>
                 <a href='/contact' className="btn btn-ghost text-l">Contact</a>
-            </div>
+            </div>}
             <div className="navbar-end">
                 <label className="toggle text-base-content">
                 <input type="checkbox" value="synthwave" className="theme-controller" />
@@ -26,5 +40,12 @@ export default function Navbar() {
                 </label>
             </div>
         </div>
+        <AnimatePresence
+            initial={false}
+            mode="wait"
+            >
+            {miniNav && (<MiniNavbar handleClose={close}/>)}
+        </AnimatePresence>
+    </>
     )
 }
