@@ -24,7 +24,7 @@ export default function Navbar() {
             <div className="navbar-start">
                 <a href='/'className="btn btn-ghost text-xl">Eric's Portfolio</a>
             </div>
-            { !miniNav && <div className="navbar-center hidden :flex gap-8">
+            { !miniNav && <div className="navbar-center hidden md:flex gap-8">
                 <a href='/about' className="btn btn-ghost text-l">About</a>
                 <a href='/projects' className="btn btn-ghost text-l">Projects</a>
                 <a href='/contact' className="btn btn-ghost text-l">Contact</a>

@@ -30,7 +30,7 @@ export default function Buttons(
         <a 
             ref={btnRef}
             href={href} 
-            className="btn-ghost text-xl lg:text-2xl mt-6 mb-6 hover:text-accent hover:underline underline-offset-4"
+            className="btn btn-ghost text-xl lg:text-2xl mt-2 mb-2 hover:text-accent hover:underline underline-offset-4"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
