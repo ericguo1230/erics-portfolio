@@ -8,9 +8,9 @@ export default function Home() {
       
       {/* Phone version - visible on small screens only */}
       <div className="md:hidden">
-        <div className="mockup-phone">
+        <div className="mockup-phone shadow-2xl">
           <div className="mockup-phone-camera"></div>
-          <div className="mockup-phone-display bg-info grid place-content-center">
+          <div className="mockup-phone-display bg-gray-400 grid place-content-center">
             <div className="bg-base-100 shadow-xl rounded-xl p-8 max-w-lg w-full text-center">
               <Image
                 src="/profile.png"

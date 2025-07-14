@@ -16,7 +16,7 @@ export default function Buttons(
 
     const handleMouseEnter = () => {
         if (btnRef.current) {
-            gsap.to(btnRef.current, { scale: 1.1, duration: 0.2 });
+            gsap.to(btnRef.current, { scale: 1.02, duration: 0.2 });
         }
     };
 
@@ -30,7 +30,7 @@ export default function Buttons(
         <a 
             ref={btnRef}
             href={href} 
-            className="btn btn-ghost text-xl lg:text-2xl mt-2 mb-2 hover:text-accent hover:underline underline-offset-4"
+            className="sidedrawer text-xl lg:text-xl w-full mb-1 mt-1 hover:text-accent"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >

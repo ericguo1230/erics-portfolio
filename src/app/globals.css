@@ -20,3 +20,18 @@
 .mockup-browser {
   z-index: 5 !important;
 }
+
+.sidedrawer {
+ text-align: left;
+ background: transparent;
+ border: none;
+ padding: 5px;
+ width: 100%;
+ cursor: pointer;
+ transition: background-color 0.2s ease;
+ border-radius: 8px;
+}
+
+.sidedrawer:hover {
+ background-color: rgba(0, 0, 0, 0.1); /* Light gray highlight */
+}
