@@ -1,18 +1,15 @@
 'use client';
-import { useState } from 'react';
 import experiences from '@/app/about/content/content';
 
 export default function About() {
-    const [expandedItems, setExpandedItems] = useState(new Set());
 
-    const toggleExpanded = (idx: number) => {
-        const newExpanded = new Set(expandedItems);
-        if (newExpanded.has(idx)) {
-            newExpanded.delete(idx);
-        } else {
-            newExpanded.add(idx);
-        }
-        setExpandedItems(newExpanded);
+    const seededRandom = (seed: number) => {
+        const x = Math.sin(seed) * 10000;
+        return x - Math.floor(x);
+    };
+
+    const getSeededRandomBetween = (min: number, max: number, seed: number) => {
+        return Math.floor(seededRandom(seed) * (max - min + 1)) + min;
     };
 
     return (
@@ -21,10 +18,11 @@ export default function About() {
                 {experiences.map((exp, idx) => (
                     <li 
                         key={idx} 
-                        className={`timeline-item ${exp.timeline} cursor-pointer rounded-lg p-2 transition-colors`}
+                        className={`timeline-item cursor-pointer rounded-lg p-2 transition-colors`}
                     
                     >
-                        <div className="timeline-middle">
+                        <div className="timeline-middle md:flex flex-col items-center inline-flex">
+                            <time className="hidden md:inline font-mono italic md:timeline-middle timeline-start">{exp.period}</time>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
@@ -40,26 +38,33 @@ export default function About() {
                         </div>
                         <div 
                             tabIndex={idx}
-                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} md:text-${idx % 2 === 0 ? 'end' : 'start'} bg-base-100 w-60 lg:w-120` }
+                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 w-60 mt-15 ${idx % 2 === 0 ? (idx === 4 ? 'md:-mr-0' : 'md:-mr-10') : 'md:-ml-10'}`}
+                            style={{ 
+                                '--random-width': `${getSeededRandomBetween(40, 80, idx + 3)}%`
+                            } as React.CSSProperties}
                         >
                             <input type="checkbox" className="peer" />
                             <div 
-                                className="collapse-title bg-base-100 text-primary-100 peer-checked:bg-base-300 peer-checked:text-accent"
+                                className={`collapse-title bg-base-100 text-primary-100 peer-checked:bg-base-300 peer-checked:text-accent ${idx % 2 === 0 ? 'md:text-end' : 'md:text-start'}`}
                             >
-                                <time className="font-mono italic">{exp.period}</time>
-                                <div className="font-black text-lg">{exp.company}</div>
-                                <div className="text-m font-black">{exp.role}</div>{exp.summary}
+                                <time className="md:hidden font-mono italic md:timeline-middle timeline-start">{exp.period}</time>
+                                <div className={`font-mono font-bold text-lg flex items-center ${idx % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
+                                    <img src={exp.logo} className="mr-2 h-5 w-7" />
+                                    {exp.company}
+                                </div>
+                                <div className="text-m font-mono font-semibold">{exp.role}</div>
+                                <div className="text-sm font-mono">{exp.summary}</div>
                             </div>
                             
-                            <div className="collapse-content text-sm mt-2 font-mono">
+                            <div className={`collapse-content text-sm mt-2 font-mono ${idx % 2 === 0 ? 'md:text-end' : 'md:text-start'}`}>
                                 {exp.details.map((detail, detailIdx) => (
-                                    <p key={detailIdx} className={`inline-flex mb-1 ${detailIdx % 2 === 0 ? 'text-accent' : 'text-primary-100'}`}>
+                                    <p key={detailIdx} className={`inline-flex mb-1 ${detailIdx % 2 === 0 ? 'text-info' : 'text-accent'}`}>
                                         <span className="text-warning text-xl mr-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
                                                 <circle cx="6" cy="14" r="2" fill="currentColor"/>
                                                 <circle cx="14" cy="6" r="2" fill="currentColor"/>
                                                 <circle cx="14" cy="14" r="2" fill="currentColor"/>
-                                                <path d="M 6 12 Q 10 8 12 6 M 12 8 L 14 12" stroke="currentColor" stroke-width="2" fill="none"/>
+                                                <path d="M 6 12 Q 10 8 12 6 M 12 8 L 14 12" stroke="currentColor" strokeWidth="2" fill="none"/>
                                             </svg>
                                         </span> {detail}
                                     </p>

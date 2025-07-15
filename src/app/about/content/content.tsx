@@ -5,6 +5,7 @@ const experiences: Experiences = [
     period: "May 2025 - Present",
     summary: "Worked on ATOM Foundation model",
     timeline: "end",
+    logo: "/rbcborealis-logo.png",
     details: [
         "Developed a YAML CI/CD pipeline in GitHub to deploy WEB API and Dagster Workspace to QA OCP Environment and run image safety scans",
         "Leverage layering techniques and analysis to optimize Docker images, reducing image size by 50% and improving deployment speed.",
@@ -17,6 +18,7 @@ const experiences: Experiences = [
     period: "Apr 2024 - Aug 2024",
     summary: "Worked on building scalable product testing and deployment framework",
     timeline: "middle",
+    logo: "/NOKIA-logo.png",
     details: [
         "Developed a YAML CI/CD pipeline in GitLab to run unit tests for template naming convention across three international repositories",
         "Achieved a 97% test coverage by employing a test-driven development (TDD) approach using the PyTest framework and Regex",
@@ -27,14 +29,43 @@ const experiences: Experiences = [
   {
     company: "NOKIA Corporation",
     role: "Network Automation",
-    period: "Aor 2023 - Aug 2023",
+    period: "Apr 2023 - Aug 2023",
     summary: "Work on custom features for Network Automation Platform product",
     timeline: "start",
+    logo: "/NOKIA-logo.png",
     details: [
         "Tested Network Automation Platform (NAP) by simulating deployments in Linux VM",
         "Programmed a custom script using Python and Excel to handle client-specific configuration uploads, resulting in more streamlined and error-free automation",
         "Utilized Postman to test RESTful API functionality for uploading and retrieving configurations, ensuring seamless communication with MongoDB",
         "Created a script with Pandas to export configurations into a custom Excel spreadsheet (.xlsx) for company reporting."
+    ]
+  },
+  {
+    company: "LUCI.AI Inc.",
+    role: "Software Engineer",
+    period: "Apr 2022 - Aug 2022",
+    summary: "Database Migration from MongoDB to PostgreSQL",
+    timeline: "start",
+    logo: "luci_ai_logo.png",
+    details: [
+        "Migrated IoT data from MongoDB to PostgreSQL using Node.js and Prisma, improving database efficiency by 30%",
+        "Developed & tested RESTful APIs with JavaScript and Postman, ensuring system reliability and scalability.",
+        "Streamlined data storage across multiple regions using SQL, reducing retrieval times by 15%.",
+        "Collaborated in daily standups to review project goals and track progress effectively"
+    ]
+  },
+  {
+    company: "Enrolled at University of Toronto!",
+    role: "Undergraduate Student",
+    period: "Sept 2021",
+    summary: "Studying Statistics and Computer Science",
+    timeline: "start",
+    logo: "/uoft-logo.png",
+    details: [
+        "Dean's List for 2021-2022 and 2024-2025 academic years",
+        "Worked on various projects in Python, Java, Javascript/Typescript, R, YAML and C",
+        "Completed courses in Data Structures, Algorithms, Databases, and Machine Learning",
+        "Worked part-time for the Facualty of Kinesiology as a Physical Activity Facilitator ensuring gym members were safe and following proper gym etiquette",
     ]
   },
 ];
@@ -45,6 +76,7 @@ export type Experience = {
   period: string;
   summary: string;
   timeline: string;
+  logo?: string;
   details: string[];
 };
 

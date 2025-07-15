@@ -35,3 +35,9 @@
 .sidedrawer:hover {
  background-color: rgba(0, 0, 0, 0.1); /* Light gray highlight */
 }
+
+@media (min-width: 1024px) {
+    .collapse {
+        width: var(--random-width) !important;
+    }
+}
