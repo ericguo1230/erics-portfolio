@@ -30,7 +30,7 @@ export default function Buttons(
         <a 
             ref={btnRef}
             href={href} 
-            className="sidedrawer text-xl lg:text-xl w-full mb-1 mt-1 hover:text-accent"
+            className="sidedrawer text-xl lg:text-xl w-full mb-1 mt-1 hover:text-accent font-mono"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >

@@ -45,7 +45,7 @@ export default function About() {
                         >
                             <input type="checkbox" className="peer" />
                             <div 
-                                className={`collapse-title bg-base-100 text-primary-100 peer-checked:bg-base-300 peer-checked:text-accent ${idx % 2 === 0 ? 'md:text-end' : 'md:text-start'}`}
+                                className={`collapse-title bg-base-100 text-primary-100 peer-checked:bg-accent peer-checked:text-warning ${idx % 2 === 0 ? 'md:text-end' : 'md:text-start'}`}
                             >
                                 <time className="md:hidden font-mono italic md:timeline-middle timeline-start">{exp.period}</time>
                                 <div className={`font-mono font-bold text-lg flex items-center ${idx % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
@@ -58,7 +58,7 @@ export default function About() {
                             
                             <div className={`collapse-content text-sm mt-2 font-mono ${idx % 2 === 0 ? 'md:text-end' : 'md:text-start'}`}>
                                 {exp.details.map((detail, detailIdx) => (
-                                    <p key={detailIdx} className={`inline-flex mb-1 ${detailIdx % 2 === 0 ? 'text-info' : 'text-accent'}`}>
+                                    <p key={detailIdx} className="inline-flex mb-1 text-info">
                                         <span className="text-warning text-xl mr-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
                                                 <circle cx="6" cy="14" r="2" fill="currentColor"/>
