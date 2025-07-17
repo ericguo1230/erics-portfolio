@@ -1,7 +1,23 @@
 'use client';
 import experiences from '@/app/about/content/content';
+import { useEffect } from 'react';
+import gsap from 'gsap';
 
 export default function About() {
+
+    useEffect(() => {
+        // Initial animation on mount
+        gsap.from(".experience-item", {
+            scale: 1,
+            opacity: 0,
+            duration: 2,
+            stagger: -1,
+            y: 20,
+            ease: "back.out(1.7)",
+            delay: 1
+        });
+        
+    }, []);
 
     const seededRandom = (seed: number) => {
         const x = Math.sin(seed) * 10000;
@@ -18,7 +34,7 @@ export default function About() {
                 {experiences.map((exp, idx) => (
                     <li 
                         key={idx} 
-                        className={`timeline-item cursor-pointer rounded-lg p-2 transition-colors`}
+                        className={`timeline-item cursor-pointer rounded-lg p-2 transition-colors experience-item`}
                     
                     >
                         <div className="timeline-middle md:flex flex-col items-center inline-flex">
@@ -38,14 +54,14 @@ export default function About() {
                         </div>
                         <div 
                             tabIndex={idx}
-                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 w-60 mt-15 ${idx % 2 === 0 ? (idx === 4 ? 'md:-mr-0' : 'md:-mr-10') : 'md:-ml-10'}`}
+                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 w-60 md:mt-15 ${idx % 2 === 0 ? (idx === 4 ? 'md:-mr-0' : 'md:-mr-10') : 'md:-ml-10'}`}
                             style={{ 
                                 '--random-width': `${getSeededRandomBetween(40, 80, idx + 3)}%`
                             } as React.CSSProperties}
                         >
                             <input type="checkbox" className="peer" />
                             <div 
-                                className={`collapse-title bg-base-100 text-primary-100 peer-checked:bg-accent peer-checked:text-warning ${idx % 2 === 0 ? 'md:text-end' : 'md:text-start'}`}
+                                className={`collapse-title bg-base-100 text-primary-100 peer-checked:bg-success peer-checked:text-success-content ${idx % 2 === 0 ? 'md:text-end' : 'md:text-start'}`}
                             >
                                 <time className="md:hidden font-mono italic md:timeline-middle timeline-start">{exp.period}</time>
                                 <div className={`font-mono font-bold text-lg flex items-center ${idx % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
@@ -56,9 +72,9 @@ export default function About() {
                                 <div className="text-sm font-mono">{exp.summary}</div>
                             </div>
                             
-                            <div className={`collapse-content text-sm mt-2 font-mono ${idx % 2 === 0 ? 'md:text-end' : 'md:text-start'}`}>
+                            <div className='collapse-content text-sm mt-2 font-mono'>
                                 {exp.details.map((detail, detailIdx) => (
-                                    <p key={detailIdx} className="inline-flex mb-1 text-info">
+                                    <p key={detailIdx} className="inline-flex mb-1 text-success">
                                         <span className="text-warning text-xl mr-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
                                                 <circle cx="6" cy="14" r="2" fill="currentColor"/>

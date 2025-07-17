@@ -30,7 +30,7 @@ const experiences: Experiences = [
     company: "NOKIA Corporation",
     role: "Network Automation",
     period: "Apr 2023 - Aug 2023",
-    summary: "Work on custom features for Network Automation Platform product",
+    summary: "Worked on custom features for Network Automation Platform product",
     timeline: "start",
     logo: "/NOKIA-logo.png",
     details: [

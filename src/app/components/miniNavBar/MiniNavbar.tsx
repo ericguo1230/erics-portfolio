@@ -3,7 +3,7 @@ import Backdrop from '@/app/components/miniNavBar/Backdrop';
 import { useEffect } from 'react';
 import Buttons from '@/app/components/miniNavBar/Buttons';
 
-export default function MiniNavbar({ handleClose }: { handleClose: () => void }) {
+export default function MiniNavbar({ handleClose, theme }: { handleClose: () => void, theme: string}) {
 
     useEffect(() => {
         const handleResize = () => {
@@ -38,15 +38,22 @@ export default function MiniNavbar({ handleClose }: { handleClose: () => void })
     return (
         <Backdrop onClick={handleClose} >
             <motion.div 
-                className="fixed top-16 left-0 h-full w-56 lg:w-70 bg-base-200 shadow-lg flex flex-col items-start p-6 z-50"
+                className="fixed top-13 left-0 h-full w-45 lg:w-58 bg-base-200 shadow-lg flex flex-col items-start justify-between pt-6 pb-8 pl-2 pr-2 z-50"
                 variants={popLeft}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
             >
-                <Buttons href="/about" title="About" icon="/file.svg" />
-                <Buttons href="/projects" title="Projects" icon="/github-logo.svg" />
-                <Buttons href="/contact" title="Contact" icon="/contact-icon.svg" />
+                <div className="flex flex-col items-start w-full">
+                    <Buttons href="/about" title="About" icon="/file.svg" />
+                    <Buttons href="/projects" title="Projects" icon="/github-logo.svg" />
+                    <Buttons href="/blog" title="Blog" icon="/contact-icon.svg" />
+                </div>
+                <div className="mb-12 md:ml-2 md:text-sm text-xs">
+                    <div className="flex"><img src="/globe.svg" className='w-4 h-4 mr-1 md:mr-2' /><p className="font-mono"> (343)-883-8189 </p></div>
+                    <div className="flex"><img src="/window.svg" className='w-4 h-4 mr-1 md:mr-2' /><p className="font-mono"> eric.guo1230@gmail.com </p></div>
+                    <p className="font-mono">Theme: <span className="text-primary">{theme}</span></p>
+                </div>
             </motion.div>
         </Backdrop>
     );

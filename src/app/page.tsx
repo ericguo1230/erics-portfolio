@@ -36,10 +36,10 @@ export default function Home() {
           gsap.from(".my-button", {
             scale: 1,
             opacity: 0,
-            duration: 2,
+            duration: 1.5,
             stagger: 1,
             ease: "back.out(1.7)",
-            delay: 1
+            delay: 0.5
           });
         }
     }, [loading]);

@@ -2,14 +2,17 @@
 import { useState, useEffect } from 'react';
 import MiniNavbar from '@/app/components/miniNavBar/MiniNavbar';
 import { AnimatePresence } from 'framer-motion';
+import NavbarButton from '@/app/components/NavBar/Buttons';
 
 export default function Navbar() {
     const [theme, setTheme] = useState('"retro"'); // Default theme
     const [mounted, setMounted] = useState(false);
+    const [currentPath, setCurrentPath] = useState('');
 
     // Set mounted to true after component mounts
     useEffect(() => {
         setMounted(true);
+        setCurrentPath(window.location.pathname);
     }, []);
 
     // Load theme from localStorage after mounting
@@ -48,12 +51,12 @@ export default function Navbar() {
                 </button>
             </div>
             <div className="navbar-start">
-                <a href='/'className="btn btn-ghost text-xl font-mono">Eric's Portfolio</a>
+                <a href='/'className="btn btn-ghost text-2xl font-mono">Eric's Portfolio</a>
             </div>
-            { !miniNav && <div className="navbar-center hidden md:flex gap-8 font-mono">
-                <a href='/about' className="btn btn-ghost text-l">About</a>
-                <a href='/projects' className="btn btn-ghost text-l">Projects</a>
-                <a href='/contact' className="btn btn-ghost text-l">Contact</a>
+            { !miniNav && <div className="navbar-center tabs hidden tabs-lift lg:flex font-mono">
+                <NavbarButton href={'/about'} title={'About'} currentPath={currentPath} />
+                <NavbarButton href={'/projects'} title={'Projects'} currentPath={currentPath} />
+                <NavbarButton href={'/blog'} title={'Blog'} currentPath={currentPath} />
             </div>}
             <div className="navbar-end">
                 <label className="toggle text-base-content">
@@ -76,7 +79,7 @@ export default function Navbar() {
             initial={false}
             mode="wait"
             >
-            {miniNav && (<MiniNavbar handleClose={close}/>)}
+            {miniNav && (<MiniNavbar handleClose={close} theme={theme}/>)}
         </AnimatePresence>
     </>
     )

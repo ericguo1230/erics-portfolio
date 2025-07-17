@@ -37,7 +37,7 @@ export default function WindowHome({ loading, intro, button }: WindowProps) {
                 <p className="intro text-lg text-base-content mb-6 mt-4">
                   {intro}
                 </p>
-                <div className="flex justify-center gap-2 m-8">
+                <div className="flex justify-center gap-6 m-8">
                   <Button button={button} ref="https://www.linkedin.com/in/ericguo1230/" content="LinkedIn" />
                   <Button button={button} ref="https://github.com/ericguo1230" content="GitHub" />
                   <Button button={button} ref="/projects" content="Resume" />
