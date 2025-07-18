@@ -43,7 +43,7 @@ export default function About() {
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
-                                className="h-5 w-5"
+                                className="h-5 w-5 text-success"
                             >
                                 <path
                                     fillRule="evenodd"
@@ -72,10 +72,10 @@ export default function About() {
                                 <div className="text-sm font-mono">{exp.summary}</div>
                             </div>
                             
-                            <div className='collapse-content text-sm mt-2 font-mono'>
+                            <div className='collapse-content text-sm pt-2 font-mono bg-info'>
                                 {exp.details.map((detail, detailIdx) => (
-                                    <p key={detailIdx} className="inline-flex mb-1 text-success">
-                                        <span className="text-warning text-xl mr-2">
+                                    <p key={detailIdx} className="inline-flex mb-1 text-info-content">
+                                        <span className="text-secondary text-m mr-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
                                                 <circle cx="6" cy="14" r="2" fill="currentColor"/>
                                                 <circle cx="14" cy="6" r="2" fill="currentColor"/>
@@ -87,7 +87,7 @@ export default function About() {
                                 ))}
                             </div>
                         </div>
-                        <hr />
+                        <hr className="bg-secondary" />
                     </li>
                 ))}
             </ul>

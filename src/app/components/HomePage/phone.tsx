@@ -1,13 +1,8 @@
 import Image from "next/image";
 import Button from "@/app/components/HomePage/Buttons";
+import { HomeProps } from "@/app/page";
 
-interface PhoneProps {
-    loading: boolean;
-    intro: string;
-    button: string;
-}
-
-export default function PhoneHome({ loading, intro, button}: PhoneProps) {
+export default function PhoneHome({ loading, intro, button, title }: HomeProps) {
     return (
         <div className="mockup-phone shadow-2xl">
             <div className="mockup-phone-camera"></div>
@@ -24,7 +19,7 @@ export default function PhoneHome({ loading, intro, button}: PhoneProps) {
                             height={200}
                             className="mx-auto rounded-full mb-4"
                         />
-                        <h1 className="text-3xl font-bold mb-2 underline">Welcome to Eric's Portfolio</h1>
+                        <h1 className="text-3xl font-bold mb-2 underline">{title}</h1>
                     </div>
                     <p className="intro text-l text-base-content mb-6 mt-4">
                         {intro}

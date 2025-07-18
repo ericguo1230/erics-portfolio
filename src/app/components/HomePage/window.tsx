@@ -1,25 +1,21 @@
 import Image from "next/image";
 import Button from "@/app/components/HomePage/Buttons";
-
-interface WindowProps {
-    loading: boolean;
-    intro: string;
-    button: string;
-}
+import { HomeProps } from "@/app/page";
+import { homePath } from "@/app/global/variables";
 
 
-export default function WindowHome({ loading, intro, button }: WindowProps) {
+export default function WindowHome({ loading, intro, button, title }: HomeProps) {
 
     return (
-        <div className="mockup-browser bg-base-100 shadow-xl rounded-xl p-8 lg:w-240 md:w-full min-h-160 h-full text-center z-60 flex flex-col">
+        <div className="mockup-browser bg-base-100 shadow-xl rounded-xl p-8 lg:w-260 md:w-full min-h-160 h-full text-center z-60 flex flex-col">
           
           {/* Toolbar stays at the top */}
           <div className="mockup-browser-toolbar">
-            <div className="input">https://ericsportfolio.com</div>
+            <div className="input">{homePath}</div>
           </div>
           
           {/* Content area */}
-            <div className="flex-grow flex flex-col justify-center items-center">
+          <div className="flex-grow flex flex-col justify-center items-center bg-base-300 mt-4">
             {loading ? (
               <span className="loading loading-spinner loading-xl"></span>
             ) : (
@@ -32,7 +28,7 @@ export default function WindowHome({ loading, intro, button }: WindowProps) {
                     height={240}
                     className="mx-auto rounded-full m-4"
                   />
-                  <h1 className="text-4xl font-bold mb-2 text-base-content underline">Welcome to Eric's Portfolio</h1>
+                  <h1 className="text-4xl font-bold mb-2 text-base-content underline">{title}</h1>
                 </div>
                 <p className="intro text-lg text-base-content mb-6 mt-4">
                   {intro}
