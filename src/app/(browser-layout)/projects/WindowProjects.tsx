@@ -1,22 +1,13 @@
 'use client';
-import { usePageContext } from "@/app/contexts/PageInfoContext";
-import { homePath } from "@/app/global/variables";
-import { PageProps } from "@/app/projects/page";
-import projects from '@/app/projects/content/content'
+import { PageProps } from "@/app/(browser-layout)/projects/page";
+import projects from '@/app/(browser-layout)/projects/content/content'
 import { useState } from 'react';
 
 export default function WindowProject({ loading }: PageProps){
     const [activeButton, setActiveButton] = useState(0);
-    const { path } = usePageContext()
 
     return(
-        <div className="mockup-browser bg-base-100 shadow-xl rounded-xl p-8 lg:w-260 md:w-full min-h-160 h-full text-center z-60 flex flex-col">
-          
-          <div className="mockup-browser-toolbar">
-            <div className="input">{homePath + path}</div>
-          </div>
-          {/* Toolbar stays at the top */}
-          <div className="flex-grow flex flex-col justify-center items-center">
+          <>
             {loading ? (
               <span className="loading loading-spinner loading-xl"></span>
             ) : 
@@ -56,7 +47,6 @@ export default function WindowProject({ loading }: PageProps){
               </div>
             </>
             }
-          </div>
-        </div>
+        </>
     );
 }

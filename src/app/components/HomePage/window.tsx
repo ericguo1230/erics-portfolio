@@ -1,46 +1,36 @@
 import Image from "next/image";
 import Button from "@/app/components/HomePage/Buttons";
-import { HomeProps } from "@/app/page";
-import { homePath } from "@/app/global/variables";
+import { HomeProps } from "@/app/(browser-layout)/page";
 
 
 export default function WindowHome({ loading, intro, button, title }: HomeProps) {
 
     return (
-        <div className="mockup-browser bg-base-100 shadow-xl rounded-xl p-8 lg:w-260 md:w-full min-h-160 h-full text-center z-60 flex flex-col">
-          
-          {/* Toolbar stays at the top */}
-          <div className="mockup-browser-toolbar">
-            <div className="input">{homePath}</div>
-          </div>
-          
-          {/* Content area */}
-          <div className="flex-grow flex flex-col justify-center items-center bg-base-300 mt-4">
-            {loading ? (
-              <span className="loading loading-spinner loading-xl"></span>
-            ) : (
-              <div>
-                <div className="window-content">
-                  <Image
-                    src="/profile.png"
-                    alt="Profile picture"
-                    width={240}
-                    height={240}
-                    className="mx-auto rounded-full m-4"
-                  />
-                  <h1 className="text-4xl font-bold mb-2 text-base-content underline">{title}</h1>
-                </div>
-                <p className="intro text-lg text-base-content mb-6 mt-4">
-                  {intro}
-                </p>
-                <div className="flex justify-center gap-6 m-8">
-                  <Button button={button} ref="https://www.linkedin.com/in/ericguo1230/" content="LinkedIn" />
-                  <Button button={button} ref="https://github.com/ericguo1230" content="GitHub" />
-                  <Button button={button} ref="/projects" content="Resume" />
-                </div>
-              </div>
-              )}
+      <>
+        {loading ? (
+          <span className="loading loading-spinner loading-xl"></span>
+        ) : (
+          <div>
+            <div className="window-content">
+              <Image
+                src="/profile.png"
+                alt="Profile picture"
+                width={240}
+                height={240}
+                className="mx-auto rounded-full m-4"
+              />
+              <h1 className="text-4xl font-bold mb-2 text-base-content underline">{title}</h1>
             </div>
-        </div>
+            <p className="intro text-lg text-base-content mb-6 mt-4">
+              {intro}
+            </p>
+            <div className="flex justify-center gap-6 m-8">
+              <Button button={button} ref="https://www.linkedin.com/in/ericguo1230/" content="LinkedIn" />
+              <Button button={button} ref="https://github.com/ericguo1230" content="GitHub" />
+              <Button button={button} ref="/projects" content="Resume" />
+            </div>
+          </div>
+          )}
+        </>
     );
 }

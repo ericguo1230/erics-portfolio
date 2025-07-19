@@ -5,7 +5,7 @@ import WindowHome from "@/app/components/HomePage/window";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import Flip from "gsap/Flip"
-import { usePageContext } from "./contexts/PageInfoContext";
+import { usePageContext } from "@/app/contexts/PageInfoContext";
 
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(Flip);
@@ -36,9 +36,9 @@ export default function Home() {
             stagger: 0.1,
             ease: "power2.out",
           })
-          gsap.from(".my-button", {
+          gsap.fromTo(".my-button", {opacity: 0}, {
             scale: 1,
-            opacity: 0,
+            opacity: 1,
             duration: 1.5,
             stagger: 1,
             ease: "back.out(1.7)",
@@ -48,7 +48,7 @@ export default function Home() {
     }, [loading]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-base-200 font-mono">
+    <>
       {/* Phone version - visible on small screens only */}
       <div className="md:hidden">
         <PhoneHome loading={loading} intro={intro} button={button} title={title}/>
@@ -58,6 +58,6 @@ export default function Home() {
       <div className="hidden md:block">
         <WindowHome loading={loading} intro={intro} button={button} title={title} />
       </div>
-    </div>
+    </>
   );
 }
