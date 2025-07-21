@@ -1,10 +1,25 @@
 'use client';
 import { PageProps } from "@/app/(browser-layout)/projects/page";
 import projects from '@/app/(browser-layout)/projects/content/content'
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { gsap } from 'gsap';
 
 export default function WindowProject({ loading }: PageProps){
     const [activeButton, setActiveButton] = useState(0);
+
+    const btnRef = useRef<HTMLAnchorElement>(null);
+
+    const handleMouseEnter = () => {
+        if (btnRef.current) {
+            gsap.to(btnRef.current, { scale: 1.1, duration: 0.2 });
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (btnRef.current) {
+            gsap.to(btnRef.current, { scale: 1, duration: 0.2 });
+        }
+    };
 
     return(
           <>
@@ -33,7 +48,16 @@ export default function WindowProject({ loading }: PageProps){
                           ))}
                         </div>
                         <div className="card-actions justify-end">
-                          <a href={`${project.link ? project.link : 'https://google.com'}`} target="_blank" className="btn btn-primary">Go to Project!</a>
+                          <a 
+                            href={`${project.link ? project.link : 'https://google.com'}`} 
+                            target="_blank"
+                            className="btn btn-primary"
+                            ref={btnRef}
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}
+                          >
+                            Go to Project!
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -42,7 +66,14 @@ export default function WindowProject({ loading }: PageProps){
               </div>
               <div className="flex w-full justify-center gap-2 py-2">
                 {projects.map((projects, idx) => (
-                  <a key={idx} href={`#${idx}`} onClick={() => setActiveButton(idx)} className={`btn btn-xs ${activeButton === idx ? 'bg-success text-success-content' : ''}`}>{idx + 1}</a>
+                  <a 
+                    key={idx} 
+                    href={`#${idx}`} 
+                    onClick={() => setActiveButton(idx)} 
+                    className={`btn btn-xs ${activeButton === idx ? 'bg-success text-success-content' : ''}`}
+                  >
+                    {idx + 1}
+                  </a>
                 ))}
               </div>
             </>

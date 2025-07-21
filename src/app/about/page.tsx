@@ -65,7 +65,7 @@ export default function About() {
                         </div>
                         <div 
                             tabIndex={idx}
-                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 !w-150 md:mt-15 ${idx % 2 === 0 ? (idx === 4 ? 'md:-mr-0' : 'md:-mr-10') : 'md:-ml-10'}`}
+                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 lg:!w-150 md:mt-15 ${idx % 2 === 0 ? (idx === 4 ? 'md:-mr-0' : 'md:-mr-10') : 'md:-ml-10'}`}
                             // style={{ 
                             //     '--random-width': `${getSeededRandomBetween(40, 80, idx + 3)}%`
                             // } as React.CSSProperties}

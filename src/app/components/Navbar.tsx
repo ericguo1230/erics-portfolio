@@ -28,7 +28,7 @@ export default function Navbar() {
                     </button>
                 </div>
                 <div className="navbar-start">
-                    <a href='/'className={`btn btn-ghost text-2xl font-mono inline-flex ${currentPath === '/' ? 'underline' : ''}`}>
+                    <a href='/'className={`btn btn-ghost text-2xl font-mono inline-flex`}>
                         Eric's Portfolio
                     </a>
                 </div>

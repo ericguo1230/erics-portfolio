@@ -26,23 +26,24 @@ export default function Home() {
 
   useEffect(() => {
         if (!loading) {
-          gsap.fromTo(".window-content", {opacity: 0}, {opacity: 1, duration: 0.5});
           let split = SplitText.create(".intro", { type: "words", mask:"words" });
-          gsap.from(split.words, {
-            duration: 1,
-            opacity: 0,
-            y: 20,
-            stagger: 0.1,
-            ease: "power2.out",
-          })
-          gsap.fromTo(".my-button", {opacity: 0}, {
-            scale: 1,
-            opacity: 1,
-            duration: 1.5,
-            stagger: 1,
-            ease: "back.out(1.7)",
-            delay: 0.5
-          });
+          const tl = gsap.timeline();
+    
+          tl.fromTo(".window-content", {opacity: 0}, {opacity: 1, duration: 1.5})
+            .from(split.words, {
+              duration: 1,
+              opacity: 0,
+              y: 20,
+              stagger: 0.1,
+              ease: "power2.out",
+            })
+            .fromTo(".my-button", {opacity: 0}, {
+              scale: 1,
+              opacity: 1,
+              duration: 1,
+              stagger: 1,
+              ease: "back.out(1.7)",
+            });
         }
     }, [loading]);
 
