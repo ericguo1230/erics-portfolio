@@ -1,23 +1,26 @@
 'use client';
 import experiences from '@/app/about/content/content';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import gsap from 'gsap';
+import { usePageContext } from '@/app/contexts/PageInfoContext';
 
 export default function About() {
+    const { path } = usePageContext();
+    const [ checkedItems, setCheckedItems ] = useState<boolean[]>(
+        new Array(experiences.length).fill(false)
+    );
 
     useEffect(() => {
-        // Initial animation on mount
-        gsap.from(".experience-item", {
+        gsap.fromTo(".experience-item", {opacity: 0},
+            {
             scale: 1,
-            opacity: 0,
+            opacity: 1,
             duration: 2,
             stagger: -1,
-            y: 20,
+            y: -20,
             ease: "back.out(1.7)",
-            delay: 1
         });
-        
-    }, []);
+    }, [path]);
 
     const seededRandom = (seed: number) => {
         const x = Math.sin(seed) * 10000;
@@ -26,6 +29,14 @@ export default function About() {
 
     const getSeededRandomBetween = (min: number, max: number, seed: number) => {
         return Math.floor(seededRandom(seed) * (max - min + 1)) + min;
+    };
+
+    const handleCheckboxChange = (idx: number, isChecked: boolean) => {
+        setCheckedItems(prev => {
+            let newCheckedItems = [...prev];
+            newCheckedItems[idx] = isChecked;
+            return newCheckedItems
+        });
     };
 
     return (
@@ -43,7 +54,7 @@ export default function About() {
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
-                                className="h-5 w-5 text-success"
+                                className={`h-5 w-5 ${checkedItems[idx] ? 'text-success' : 'text-neutral'}`}
                             >
                                 <path
                                     fillRule="evenodd"
@@ -54,28 +65,33 @@ export default function About() {
                         </div>
                         <div 
                             tabIndex={idx}
-                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 w-60 md:mt-15 ${idx % 2 === 0 ? (idx === 4 ? 'md:-mr-0' : 'md:-mr-10') : 'md:-ml-10'}`}
-                            style={{ 
-                                '--random-width': `${getSeededRandomBetween(40, 80, idx + 3)}%`
-                            } as React.CSSProperties}
+                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 !w-150 md:mt-15 ${idx % 2 === 0 ? (idx === 4 ? 'md:-mr-0' : 'md:-mr-10') : 'md:-ml-10'}`}
+                            // style={{ 
+                            //     '--random-width': `${getSeededRandomBetween(40, 80, idx + 3)}%`
+                            // } as React.CSSProperties}
                         >
-                            <input type="checkbox" className="peer" />
+                            <input 
+                                type="checkbox" 
+                                className="peer" 
+                                checked={checkedItems[idx]}
+                                onChange={(e) => handleCheckboxChange(idx, e.target.checked)}
+                            />
                             <div 
                                 className={`collapse-title bg-base-100 text-primary-100 peer-checked:bg-success peer-checked:text-success-content ${idx % 2 === 0 ? 'md:text-end' : 'md:text-start'}`}
                             >
                                 <time className="md:hidden font-mono italic md:timeline-middle timeline-start">{exp.period}</time>
+                                <img src={exp.logo} className={`h-30 w-30 object-contain ${idx % 2 === 0 ? 'md:justify-self-end' : 'md:justify-self-start'}`} />
                                 <div className={`font-mono font-bold text-lg flex items-center ${idx % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
-                                    <img src={exp.logo} className="mr-2 h-5 w-7" />
                                     {exp.company}
                                 </div>
                                 <div className="text-m font-mono font-semibold">{exp.role}</div>
                                 <div className="text-sm font-mono">{exp.summary}</div>
                             </div>
                             
-                            <div className='collapse-content text-sm pt-2 font-mono bg-info'>
+                            <div className='collapse-content text-sm pt-2 font-mono bg-base-100'>
                                 {exp.details.map((detail, detailIdx) => (
-                                    <p key={detailIdx} className="inline-flex mb-1 text-info-content">
-                                        <span className="text-secondary text-m mr-2">
+                                    <p key={detailIdx} className="inline-flex mb-1 text-base-content">
+                                        <span className="text-success text-m mr-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
                                                 <circle cx="6" cy="14" r="2" fill="currentColor"/>
                                                 <circle cx="14" cy="6" r="2" fill="currentColor"/>
@@ -87,7 +103,7 @@ export default function About() {
                                 ))}
                             </div>
                         </div>
-                        <hr className="bg-secondary" />
+                        <hr className={` ${checkedItems[idx] ? 'bg-success' : 'bg-base-300'}`} />
                     </li>
                 ))}
             </ul>

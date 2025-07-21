@@ -6,7 +6,7 @@ import { AnimatePresence } from 'framer-motion';
 import NavbarButton from '@/app/components/NavBar/Buttons';
 
 export default function Navbar() {
-    const { path: currentPath, theme, setTheme, mounted } = usePageContext();
+    const { path: currentPath, theme, setTheme } = usePageContext();
     const [miniNav, setMiniNav] = useState(false);
 
     const open = () => setMiniNav(true); 
@@ -18,7 +18,7 @@ export default function Navbar() {
 
     return (
         <>
-            <div className="navbar bg-base-100 shadow-lg sticky top-0 z-50">
+            <div className="navbar bg-base-100 shadow-lg sticky top-0 z-150">
                 <div className="flex-none">
                     <button 
                         className="btn btn-square btn-ghost"

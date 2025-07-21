@@ -1,6 +1,6 @@
 'use client';
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface PageContextType {
     path: string;
@@ -28,11 +28,21 @@ export function PageProvider({ children,}: { children: ReactNode,}) {
 
     useEffect(() => {
         setMounted(true);
-        const timer = setTimeout(() => {
-            setLoading(false);
-        }, 1000); 
-        return () => clearTimeout(timer);
     }, []);
+
+    useEffect(() => {
+        if (mounted) {
+            console.log('Path changed to:', currentPath);
+            setLoading(true);
+            console.log(loading)
+            const timer = setTimeout(() => {
+                console.log('waiting')
+                setLoading(false);
+            }, 1500);
+
+            return () => clearTimeout(timer);
+        }
+    }, [currentPath, mounted]);
 
     useEffect(() => {
         if (mounted) {

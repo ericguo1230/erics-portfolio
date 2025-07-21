@@ -6,9 +6,10 @@ interface ButtonProps {
     ref: string;
     content: string;
     img?: string;
+    new?: boolean;
 }
 
-export default function Button({button, ref, content, img}: ButtonProps) {
+export default function Button({button, ref, content, img, new: isNew= false }: ButtonProps) {
 
     const btnRef = useRef<HTMLAnchorElement>(null);
 
@@ -31,7 +32,7 @@ export default function Button({button, ref, content, img}: ButtonProps) {
             className={`${button} btn btn-primary hover:btn-secondary`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            target="_blank"
+            target={`${isNew ? '_blank' : ''}`}
             rel="noopener noreferrer"
         >
             {content}

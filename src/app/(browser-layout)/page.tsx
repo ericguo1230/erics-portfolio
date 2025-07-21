@@ -1,5 +1,5 @@
 'use client';
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import PhoneHome from "@/app/components/HomePage/phone";
 import WindowHome from "@/app/components/HomePage/window";
 import gsap from "gsap";
@@ -25,9 +25,8 @@ export default function Home() {
   const { loading } = usePageContext()
 
   useEffect(() => {
-        console.log(loading)
         if (!loading) {
-          gsap.fromTo(".window-content", {opacity: 0}, {opacity: 1, duration: 1});
+          gsap.fromTo(".window-content", {opacity: 0}, {opacity: 1, duration: 0.5});
           let split = SplitText.create(".intro", { type: "words", mask:"words" });
           gsap.from(split.words, {
             duration: 1,
