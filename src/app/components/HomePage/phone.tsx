@@ -25,7 +25,7 @@ export default function PhoneHome({ loading, intro, button, title }: HomeProps) 
                 <div className="flex justify-center gap-6 m-8">
                     <Button button={button} ref="https://www.linkedin.com/in/ericguo1230/" content="LinkedIn" />
                     <Button button={button} ref="https://github.com/ericguo1230" content="GitHub" />
-                    <Button button={button} ref="/resume" content="Resume" />
+                    <Button button={button} ref="/resume" content="Resume" isNew={true} internal={true} />
                 </div>
             </div>}
         </>

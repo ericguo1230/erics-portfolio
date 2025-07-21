@@ -1,5 +1,6 @@
 import { gsap } from "gsap";
 import { useRef } from "react";
+import Link from "next/link";
 
 interface ButtonProps {
     button: string;
@@ -7,9 +8,10 @@ interface ButtonProps {
     content: string;
     img?: string;
     isNew?: boolean;
+    internal?: boolean;
 }
 
-export default function Button({button, ref, content, img, isNew = false }: ButtonProps) {
+export default function Button({button, ref, content, img, isNew = false, internal = false }: ButtonProps) {
 
     const btnRef = useRef<HTMLAnchorElement>(null);
 
@@ -26,16 +28,30 @@ export default function Button({button, ref, content, img, isNew = false }: Butt
     };
 
     return (
-        <a
-            ref={btnRef}
-            href={ref}
-            className={`${button} btn btn-primary hover:btn-secondary`}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            target={`${isNew ? '' : '_blank'}`}
-            rel="noopener noreferrer"
-        >
-            {content}
-        </a>
+        <>
+            {!internal ? (<a
+                ref={btnRef}
+                href={ref}
+                className={`${button} btn btn-primary hover:btn-secondary`}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                target={`${isNew ? '' : '_blank'}`}
+                rel="noopener noreferrer"
+            >
+                {content}
+            </a>) : (
+                <Link
+                    ref={btnRef}
+                    href={ref}
+                    className={`${button} btn btn-primary hover:btn-secondary`}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    target={`${isNew ? '' : '_blank'}`}
+                    rel="noopener noreferrer"
+                >
+                    {content}
+                </Link>
+                )}
+        </>
     );
 }

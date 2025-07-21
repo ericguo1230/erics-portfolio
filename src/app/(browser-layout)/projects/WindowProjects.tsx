@@ -1,23 +1,43 @@
 'use client';
 import { PageProps } from "@/app/(browser-layout)/projects/page";
 import projects from '@/app/(browser-layout)/projects/content/content'
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
 export default function WindowProject({ loading }: PageProps){
     const [activeButton, setActiveButton] = useState(0);
 
-    const btnRef = useRef<HTMLAnchorElement>(null);
+    // Create refs for each project button and navigation buttons
+    const projectBtnRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+    const navBtnRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
-    const handleMouseEnter = () => {
-        if (btnRef.current) {
-            gsap.to(btnRef.current, { scale: 1.1, duration: 0.2 });
+    // Initialize refs arrays
+    useEffect(() => {
+        projectBtnRefs.current = projectBtnRefs.current.slice(0, projects.length);
+        navBtnRefs.current = navBtnRefs.current.slice(0, projects.length);
+    }, []);
+
+    const handleProjectBtnMouseEnter = (index: number) => {
+        if (projectBtnRefs.current[index]) {
+            gsap.to(projectBtnRefs.current[index], { scale: 1.1, duration: 0.2 });
         }
     };
 
-    const handleMouseLeave = () => {
-        if (btnRef.current) {
-            gsap.to(btnRef.current, { scale: 1, duration: 0.2 });
+    const handleProjectBtnMouseLeave = (index: number) => {
+        if (projectBtnRefs.current[index]) {
+            gsap.to(projectBtnRefs.current[index], { scale: 1, duration: 0.2 });
+        }
+    };
+
+    const handleNavBtnMouseEnter = (index: number) => {
+        if (navBtnRefs.current[index]) {
+            gsap.to(navBtnRefs.current[index], { scale: 1.05, duration: 0.2 });
+        }
+    };
+
+    const handleNavBtnMouseLeave = (index: number) => {
+        if (navBtnRefs.current[index]) {
+            gsap.to(navBtnRefs.current[index], { scale: 1, duration: 0.2 });
         }
     };
 
@@ -51,10 +71,10 @@ export default function WindowProject({ loading }: PageProps){
                           <a 
                             href={`${project.link ? project.link : 'https://google.com'}`} 
                             target="_blank"
-                            className="btn btn-primary"
-                            ref={btnRef}
-                            onMouseEnter={handleMouseEnter}
-                            onMouseLeave={handleMouseLeave}
+                            className="btn btn-primary hover:btn-success"
+                            ref={(el) => projectBtnRefs.current[idx] = el}
+                            onMouseEnter={() => handleProjectBtnMouseEnter(idx)}
+                            onMouseLeave={() => handleProjectBtnMouseLeave(idx)}
                           >
                             Go to Project!
                           </a>
@@ -65,12 +85,15 @@ export default function WindowProject({ loading }: PageProps){
                 ))}
               </div>
               <div className="flex w-full justify-center gap-2 py-2">
-                {projects.map((projects, idx) => (
+                {projects.map((project, idx) => (
                   <a 
                     key={idx} 
                     href={`#${idx}`} 
                     onClick={() => setActiveButton(idx)} 
                     className={`btn btn-xs ${activeButton === idx ? 'bg-success text-success-content' : ''}`}
+                    ref={(el) => navBtnRefs.current[idx] = el}
+                    onMouseEnter={() => handleNavBtnMouseEnter(idx)}
+                    onMouseLeave={() => handleNavBtnMouseLeave(idx)}
                   >
                     {idx + 1}
                   </a>
