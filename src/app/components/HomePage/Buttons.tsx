@@ -32,7 +32,7 @@ export default function Button({button, ref, content, img, isNew = false, intern
             {!internal ? (<a
                 ref={btnRef}
                 href={ref}
-                className={`${button} btn btn-primary hover:btn-secondary`}
+                className={`${button} btn btn-primary hover:btn-success`}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 target={`${isNew ? '' : '_blank'}`}
@@ -43,7 +43,7 @@ export default function Button({button, ref, content, img, isNew = false, intern
                 <Link
                     ref={btnRef}
                     href={ref}
-                    className={`${button} btn btn-primary hover:btn-secondary`}
+                    className={`${button} btn btn-primary hover:btn-success`}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     target={`${isNew ? '' : '_blank'}`}

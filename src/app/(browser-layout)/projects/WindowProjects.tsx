@@ -55,15 +55,16 @@ export default function WindowProject({ loading }: PageProps){
                         <img
                           src={project.img ? project.img : '/globe.svg'}
                           alt={project.name}
-                          className="w-full h-full object-contain"
+                          className="w-full h-full object-contain bg-base-300"
                         />
                       </figure>
-                      <div className="card-body w-2/5 flex flex-col h-full">
+                      <div className="card-body w-2/5 flex flex-col h-full bg-base-200">
                         <h1 className="text-center card-title text-3xl underline font-bold mb-4 w-full ">{project.name}</h1>
+                        <h2 className="text-start italic text-accent">{project.date}</h2>
                         <div className="text-start h-full">
                           {project.summary.map((detail, detailIdx) => (
                             <p key={detailIdx} className="mb-2">
-                              • {detail}
+                              <span className ="text-success">•</span> {detail}
                             </p>
                           ))}
                         </div>
@@ -90,7 +91,7 @@ export default function WindowProject({ loading }: PageProps){
                     key={idx} 
                     href={`#${idx}`} 
                     onClick={() => setActiveButton(idx)} 
-                    className={`btn btn-xs ${activeButton === idx ? 'bg-success text-success-content' : ''}`}
+                    className={`btn btn-xs hover:btn-success ${activeButton === idx ? '!bg-success !text-success-content' : ''}`}
                     ref={(el) => navBtnRefs.current[idx] = el}
                     onMouseEnter={() => handleNavBtnMouseEnter(idx)}
                     onMouseLeave={() => handleNavBtnMouseLeave(idx)}

@@ -3,7 +3,7 @@ const experiences: Experiences = [
     company: "RBC Borealis",
     role: "Machine Learning Software Engineer",
     period: "May 2025 - Present",
-    summary: "Worked on ATOM Foundation model",
+    summary: "Working on ATOM Foundation model!",
     timeline: "end",
     logo: "/rbcborealis-logo.png",
     details: [
@@ -16,7 +16,7 @@ const experiences: Experiences = [
     company: "NOKIA Corporation",
     role: "Network Automation",
     period: "Apr 2024 - Aug 2024",
-    summary: "Worked on building scalable product testing and deployment framework",
+    summary: "Worked on building scalable product testing and deployment framework!",
     timeline: "middle",
     logo: "/NOKIA-logo.png",
     details: [

@@ -4,6 +4,7 @@ import { usePageContext } from '@/app/contexts/PageInfoContext';
 import MiniNavbar from '@/app/components/miniNavBar/MiniNavbar';
 import { AnimatePresence } from 'framer-motion';
 import NavbarButton from '@/app/components/NavBar/Buttons';
+import Link from 'next/link';
 
 export default function Navbar() {
     const { path: currentPath, theme, setTheme } = usePageContext();
@@ -13,7 +14,7 @@ export default function Navbar() {
     const close = () => setMiniNav(false); 
 
     const toggleTheme = () => {
-        setTheme(theme === '"retro"' ? '"synthwave"' : '"retro"');
+        setTheme(theme === '"retro"' ? '"dracula"' : '"retro"');
     };
 
     return (
@@ -28,9 +29,9 @@ export default function Navbar() {
                     </button>
                 </div>
                 <div className="navbar-start">
-                    <a href='/'className={`btn btn-ghost text-2xl font-mono inline-flex`}>
+                    <Link href='/'className={`btn btn-ghost text-2xl font-mono inline-flex`}>
                         Eric's Portfolio
-                    </a>
+                    </Link>
                 </div>
                 { !miniNav && <div className="navbar-center tabs hidden tabs-lift lg:flex font-mono">
                     <NavbarButton href={'/about'} title={'About'} currentPath={currentPath} />
@@ -41,9 +42,9 @@ export default function Navbar() {
                     <label className="toggle text-base-content">
                     <input 
                         type="checkbox" 
-                        value="synthwave" 
+                        value="dracula" 
                         className="theme-controller" 
-                        checked={theme === '"synthwave"'}
+                        checked={theme === '"dracula"'}
                         onChange={toggleTheme}
                     />
 

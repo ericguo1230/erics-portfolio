@@ -26,17 +26,17 @@ export default function Home() {
 
   useEffect(() => {
         if (!loading) {
-          let split = SplitText.create(".intro", { type: "words", mask:"words" });
           const tl = gsap.timeline();
+          let split = SplitText.create(".intro", { type: "words", mask:"words" });
     
-          tl.fromTo(".window-content", {opacity: 0}, {opacity: 1, duration: 1.5})
+          tl.fromTo(".window-content", {opacity: 0}, {opacity: 1, duration: 1}, "<0.5")
             .from(split.words, {
               duration: 1,
               opacity: 0,
               y: 20,
               stagger: 0.1,
               ease: "power2.out",
-            })
+            }, "<0.5")
             .fromTo(".my-button", {opacity: 0}, {
               scale: 1,
               opacity: 1,

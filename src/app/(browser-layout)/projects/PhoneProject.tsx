@@ -1,10 +1,10 @@
 'use client';
 import { PageProps } from "@/app/(browser-layout)/projects/page";
 import projects from '@/app/(browser-layout)/projects/content/content'
-import { useState } from 'react';
+
+const div_height = 120
 
 export default function PhoneProject({ loading }: PageProps){
-    const [activeButton, setActiveButton] = useState(0);
 
     return(
           <>
@@ -12,37 +12,37 @@ export default function PhoneProject({ loading }: PageProps){
               <span className="loading loading-ring loading-xl"></span>
             ) : 
             <>
-              <div className="carousel w-full mt-5">
+              <div className={`carousel carousel-vertical round-box max-h-${div_height} w-full p-5`}>
                 {projects.map((project, idx) => (
-                  <div key={idx} id={`${idx}`} className="carousel-item w-full">
-                    <div className="card card-side bg-base-100 shadow-xl">
-                      <figure className="w-2/5">
+                  <div key={idx} id={`${idx}`} className={`carousel-item max-h-120 w-full flex flex-col overflow-auto`}>
+                    <div className="card bg-base-100 image-full w-full shadow-sm">
+                      <figure>
                         <img
-                          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+                          src={project.img ? project.img : "/window.svg"}
                           alt={project.name}
-                          className="w-full h-full object-cover"
                         />
                       </figure>
-                      <div className="card-body w-3/5 flex flex-col h-full">
-                        <h1 className="card-title text-3xl underline font-bold mb-4">{project.name}</h1>
+                      <div className="card-body">
+                        <h1 className="card-title text-2xl text-accent underline font-bold mb-4">{project.name}</h1>
                         <div className="text-start h-full">
                           {project.summary.map((detail, detailIdx) => (
-                            <p key={detailIdx} className="mb-2">
-                              • {detail}
+                            <p key={detailIdx} className="text-sm text-secondary mb-2">
+                              <span className="text-accent">•</span> {detail}
                             </p>
                           ))}
                         </div>
-                        <div className="card-actions justify-end">
-                          <button className="btn btn-primary">Go to Project!</button>
+                        <div className="justify-end">
+                          <a
+                            href={`${project.link ? project.link : 'https://google.com'}`}
+                            target='_blank'
+                            className="btn btn-primary btn-sm hover:btn-success"
+                          >
+                            Go to Project!
+                          </a>
                         </div>
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
-              <div className="flex w-full justify-center gap-2 py-2">
-                {projects.map((projects, idx) => (
-                  <a key={idx} href={`#${idx}`} onClick={() => setActiveButton(idx)} className={`btn btn-xs ${activeButton === idx ? 'bg-success text-success-content' : ''}`}>{idx + 1}</a>
                 ))}
               </div>
             </>

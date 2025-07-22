@@ -22,14 +22,6 @@ export default function About() {
         });
     }, [path]);
 
-    const seededRandom = (seed: number) => {
-        const x = Math.sin(seed) * 10000;
-        return x - Math.floor(x);
-    };
-
-    const getSeededRandomBetween = (min: number, max: number, seed: number) => {
-        return Math.floor(seededRandom(seed) * (max - min + 1)) + min;
-    };
 
     const handleCheckboxChange = (idx: number, isChecked: boolean) => {
         setCheckedItems(prev => {
@@ -49,7 +41,7 @@ export default function About() {
                     
                     >
                         <div className="timeline-middle md:flex flex-col items-center inline-flex">
-                            <time className="hidden md:inline font-mono italic md:timeline-middle timeline-start">{exp.period}</time>
+                            <time className="hidden md:inline font-mono text-base-content italic md:timeline-middle timeline-start">{exp.period}</time>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
@@ -66,9 +58,6 @@ export default function About() {
                         <div 
                             tabIndex={idx}
                             className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 lg:!w-150 md:mt-15 ${idx % 2 === 0 ? (idx === 4 ? 'md:-mr-0' : 'md:-mr-10') : 'md:-ml-10'}`}
-                            // style={{ 
-                            //     '--random-width': `${getSeededRandomBetween(40, 80, idx + 3)}%`
-                            // } as React.CSSProperties}
                         >
                             <input 
                                 type="checkbox" 
@@ -77,15 +66,16 @@ export default function About() {
                                 onChange={(e) => handleCheckboxChange(idx, e.target.checked)}
                             />
                             <div 
-                                className={`collapse-title bg-base-100 text-primary-100 peer-checked:bg-success peer-checked:text-success-content ${idx % 2 === 0 ? 'md:text-end' : 'md:text-start'}`}
+                                className={`collapse-title font-mono bg-base-100 text-base-content peer-checked:bg-success peer-checked:text-success-content text-center flex flex-col items-center`}
                             >
-                                <time className="md:hidden font-mono italic md:timeline-middle timeline-start">{exp.period}</time>
-                                <img src={exp.logo} className={`h-30 w-30 object-contain ${idx % 2 === 0 ? 'md:justify-self-end' : 'md:justify-self-start'}`} />
-                                <div className={`font-mono font-bold text-lg flex items-center ${idx % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
-                                    {exp.company}
-                                </div>
-                                <div className="text-m font-mono font-semibold">{exp.role}</div>
-                                <div className="text-sm font-mono">{exp.summary}</div>
+                                <time className="md:hidden italic md:timeline-middle timeline-start">{exp.period}</time>
+                                <img
+                                    className="md:w-80 md:h-80 w-40 h-40 object-contain items-center"
+                                    src = {exp.logo}
+                                />
+                                <h1 className="font-bold text-2xl pt-2">{exp.company}</h1>
+                                <div className="text-m font-semibold">{exp.role}</div>
+                                <div className="text-sm">{exp.summary}</div>
                             </div>
                             
                             <div className='collapse-content text-sm pt-2 font-mono bg-base-100'>

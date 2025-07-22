@@ -17,7 +17,7 @@ export default function PhoneHome({ loading, intro, button, title }: HomeProps) 
                         height={200}
                         className="mx-auto rounded-full mb-4"
                     />
-                    <h1 className="text-3xl font-bold mb-2 underline">{title}</h1>
+                    <h1 className="text-3xl font-bold mb-2 underline text-success">{title}</h1>
                 </div>
                 <p className="intro text-l text-base-content mb-6 mt-4">
                     {intro}
