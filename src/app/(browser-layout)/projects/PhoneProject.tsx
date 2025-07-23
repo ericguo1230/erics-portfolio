@@ -24,6 +24,7 @@ export default function PhoneProject({ loading }: PageProps){
                       </figure>
                       <div className="card-body">
                         <h1 className="card-title text-2xl text-accent underline font-bold mb-4">{project.name}</h1>
+                        <h2 className="text-l text-success">{project.date}</h2>
                         <div className="text-start h-full">
                           {project.summary.map((detail, detailIdx) => (
                             <p key={detailIdx} className="text-sm text-secondary mb-2">

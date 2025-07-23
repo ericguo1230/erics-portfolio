@@ -9,7 +9,8 @@ const experiences: Experiences = [
     details: [
         "Developed a YAML CI/CD pipeline in GitHub to deploy WEB API and Dagster Workspace to QA OCP Environment and run image safety scans",
         "Leverage layering techniques and analysis to optimize Docker images, reducing image size by 50% and improving deployment speed.",
-        "Develop middleware for web api service to serve ATOM model embeddings and implement OAuth2.0 authentication",
+        "Develop middleware for Web API service to serve ATOM model embeddings and implement OAuth2.0 authentication in under 100ms and performed unit and load testing with Pytest and Postman",
+        "Building Dagster pipelines to move client data to Amazon S3 & Node in a PyArrow and Parquet format to allow for efficient reading and querying with DuckDB in downstream applications",
     ]
   },
   {
@@ -55,6 +56,19 @@ const experiences: Experiences = [
     ]
   },
   {
+    company: "Joined University College Dragon Boat Club!",
+    role: "Paddler",
+    period: "Feb 2022",
+    summary: "Joined Competitive Dragon Boat Club at UofT!",
+    timeline: "start",
+    logo: "/UC.png",
+    details: [
+        "Competed in several regattas and finished top in many",
+        "Traveled to Montreal to compete in National Championship",
+        "Developed love of working out! Started training beginners"
+    ]
+  },
+  {
     company: "Enrolled at University of Toronto!",
     role: "Undergraduate Student",
     period: "Sept 2021",
@@ -68,6 +82,19 @@ const experiences: Experiences = [
         "Worked part-time for the Facualty of Kinesiology as a Physical Activity Facilitator ensuring gym members were safe and following proper gym etiquette",
     ]
   },
+  {
+    company: "Started playing Competitive Basketball",
+    role: "Ottawa Next Level",
+    period: "Sept 2014",
+    summary: "Played AAA Basketball in Ottawa",
+    timeline: "start",
+    logo: "/ONL.jpg",
+    details: [
+        "Played competitive basketball for 4 years until Grade 10",
+        "Joined school varsity team until Grade 10 including Junior Varisty and Middle School",
+        "Eventually started coaching kids how to play teaching up to a class size of 24"
+    ]
+  }
 ];
 
 export type Experience = {

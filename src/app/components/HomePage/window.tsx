@@ -19,7 +19,7 @@ export default function WindowHome({ loading, intro, button, title }: HomeProps)
                 height={240}
                 className="mx-auto rounded-full m-4"
               />
-              <h1 className="text-4xl font-bold mb-2 text-base-content underline">{title}</h1>
+              <h1 className="text-4xl font-bold mb-2 text-success underline">{title}</h1>
             </div>
             <p className="intro text-lg text-base-content mb-6 mt-4">
               {intro}
@@ -28,6 +28,7 @@ export default function WindowHome({ loading, intro, button, title }: HomeProps)
               <Button button={button} ref="https://www.linkedin.com/in/ericguo1230/" content="LinkedIn" />
               <Button button={button} ref="https://github.com/ericguo1230" content="GitHub" />
               <Button button={button} ref="/resume" content="Resume" isNew={true} internal={true}/>
+              <Button button={button} ref="/fun_facts" content="Learn More!" isNew={true} internal={true}/>
             </div>
           </div>
           )}
