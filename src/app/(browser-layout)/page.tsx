@@ -17,7 +17,7 @@ export interface HomeProps {
     title: string;
 }
 
-const intro = "Hi, I'm Eric! I'm a software engineer with a passion for Machine Learning and Software and Data Engineering! Connect with me on LinkedIn or check out my projects below!";
+const intro = "Hi, I'm Eric! I'm a student studying Statistics and Computer Science with a passion for Machine Learning and Software and Data Engineering! Connect with me on LinkedIn or check out my projects below!";
 const button = "my-button";
 const title = "Welcome to Eric's Portfolio";
 
@@ -36,7 +36,7 @@ export default function Home() {
               y: 20,
               stagger: 0.1,
               ease: "power2.out",
-            }, "<0.5")
+            }, "<2.5")
             .fromTo(".my-button", {opacity: 0}, {
               scale: 1,
               opacity: 1,
