@@ -13,7 +13,7 @@ export default function WindowHome({ loading, intro, button, title }: HomeProps)
           <div>
             <div className="window-content">
               <Image
-                src="/profile.png"
+                src="profile.png"
                 alt="Profile picture"
                 width={240}
                 height={240}

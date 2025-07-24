@@ -45,13 +45,13 @@ export default function MiniNavbar({ handleClose, theme }: { handleClose: () => 
                 exit="exit"
             >
                 <div className="flex flex-col items-start w-full">
-                    <Buttons href="/about" title="About" icon="/file.svg" />
-                    <Buttons href="/projects" title="Projects" icon="/github-logo.svg" />
-                    <Buttons href="/blog" title="Blog" icon="/contact-icon.svg" />
+                    <Buttons href="/about" title="About" icon="file.svg" />
+                    <Buttons href="/projects" title="Projects" icon="github-logo.svg" />
+                    <Buttons href="/blog" title="Blog" icon="contact-icon.svg" />
                 </div>
                 <div className="mb-12 md:ml-2 md:text-sm text-xs">
-                    <div className="flex"><img src="/globe.svg" className='w-4 h-4 mr-1 md:mr-2' /><p className="font-mono"> (343)-883-8189 </p></div>
-                    <div className="flex"><img src="/window.svg" className='w-4 h-4 mr-1 md:mr-2' /><p className="font-mono"> eric.guo1230@gmail.com </p></div>
+                    <div className="flex"><img src="globe.svg" className='w-4 h-4 mr-1 md:mr-2' /><p className="font-mono"> (343)-883-8189 </p></div>
+                    <div className="flex"><img src="window.svg" className='w-4 h-4 mr-1 md:mr-2' /><p className="font-mono"> eric.guo1230@gmail.com </p></div>
                     <p className="font-mono">Theme: <span className="text-primary">{theme}</span></p>
                 </div>
             </motion.div>

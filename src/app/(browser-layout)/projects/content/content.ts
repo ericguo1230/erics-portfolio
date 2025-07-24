@@ -4,7 +4,7 @@ const projects: Projects[] = [
         date: "Feb 2025 - Apr 2025",
         description: "Using time series models and machine learning models to forecast cocoa price",
         link: "https://docs.google.com/document/d/1ET9jRQvJmYWa6kNtjZoijTWou8ecyBM9-4Umm05HVXo/edit?usp=sharing",
-        img:'/cocoa-price.png',
+        img:'cocoa-price.png',
         summary: [
             "Used R to perform data preparation and model creation / fitting to predict Cocoa Price",
             "Tested models like ARIMA, ARIMAX, ARIMAX + GARCH and Random Forest Machine Learning models",
@@ -14,7 +14,7 @@ const projects: Projects[] = [
     {
         name: "Scriptorium",
         date: "Sept 2024 - Dec 2024",
-        img: '/scriptorium-logo.png',
+        img: 'scriptorium-logo.png',
         link: "https://github.com/ericguo1230/csc309-scriptorium-pp2",
         description: "Created Next.js Website that allowed users to execute code and create blogs using React, Typescript, Prisma",
         summary: [

@@ -5,7 +5,7 @@ const experiences: Experiences = [
     period: "May 2025 - Present",
     summary: "Working on ATOM Foundation model!",
     timeline: "end",
-    logo: "/rbcborealis-logo.png",
+    logo: "rbcborealis-logo.png",
     details: [
         "Developed a YAML CI/CD pipeline in GitHub to deploy WEB API and Dagster Workspace to QA OCP Environment and run image safety scans",
         "Leverage layering techniques and analysis to optimize Docker images, reducing image size by 50% and improving deployment speed.",
@@ -19,7 +19,7 @@ const experiences: Experiences = [
     period: "Apr 2024 - Aug 2024",
     summary: "Worked on building scalable product testing and deployment framework!",
     timeline: "middle",
-    logo: "/NOKIA-logo.png",
+    logo: "NOKIA-logo.png",
     details: [
         "Developed a YAML CI/CD pipeline in GitLab to run unit tests for template naming convention across three international repositories",
         "Achieved a 97% test coverage by employing a test-driven development (TDD) approach using the PyTest framework and Regex",
@@ -33,7 +33,7 @@ const experiences: Experiences = [
     period: "Apr 2023 - Aug 2023",
     summary: "Worked on custom features for Network Automation Platform product",
     timeline: "start",
-    logo: "/NOKIA-logo.png",
+    logo: "NOKIA-logo.png",
     details: [
         "Tested Network Automation Platform (NAP) by simulating deployments in Linux VM",
         "Programmed a custom script using Python and Excel to handle client-specific configuration uploads, resulting in more streamlined and error-free automation",
@@ -61,7 +61,7 @@ const experiences: Experiences = [
     period: "Feb 2022",
     summary: "Joined Competitive Dragon Boat Club at UofT!",
     timeline: "start",
-    logo: "/UC.png",
+    logo: "UC.png",
     details: [
         "Competed in several regattas and finished top in many",
         "Traveled to Montreal to compete in National Championship",
@@ -74,7 +74,7 @@ const experiences: Experiences = [
     period: "Sept 2021",
     summary: "Studying Statistics and Computer Science",
     timeline: "start",
-    logo: "/uoft-logo.png",
+    logo: "uoft-logo.png",
     details: [
         "Dean's List for 2021-2022 and 2024-2025 academic years",
         "Worked on various projects in Python, Java, Javascript/Typescript, R, YAML and C",
@@ -88,7 +88,7 @@ const experiences: Experiences = [
     period: "Sept 2014",
     summary: "Played AAA Basketball in Ottawa",
     timeline: "start",
-    logo: "/ONL.jpg",
+    logo: "ONL.jpg",
     details: [
         "Played competitive basketball for 4 years until Grade 10",
         "Joined school varsity team until Grade 10 including Junior Varisty and Middle School",
