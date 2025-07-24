@@ -83,7 +83,7 @@ const experiences: Experiences = [
     ]
   },
   {
-    company: "Started playing Competitive Basketball",
+    company: "Started Playing Competitive Basketball",
     role: "Ottawa Next Level",
     period: "Sept 2014",
     summary: "Played AAA Basketball in Ottawa",

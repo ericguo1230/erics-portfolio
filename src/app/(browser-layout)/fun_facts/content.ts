@@ -10,10 +10,18 @@ const facts: string[] = [
 interface Courses{
     name: string;
     skills: string;
-    description: string;
+    description?: string;
 }
 
 const courses: Courses[] = [
+    {
+        name:"CSC369",
+        skills: "Operating Systems: process and concurrency - synchronization, mutual exclusion, deadlock. Memory management, file systems, process scheduling, threads, and protection"
+    },
+    {
+        name:"STA414",
+        skills: "Machine Learning neural networks, variational autoencoders, and supervised and unsupervised learning"
+    },
     {
         name: "CSC343",
         skills: "SQL, Relation Algebra, Designing Databases and Advanced Queries",

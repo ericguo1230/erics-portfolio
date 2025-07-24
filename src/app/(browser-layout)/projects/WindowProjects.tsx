@@ -73,7 +73,7 @@ export default function WindowProject({ loading }: PageProps){
                             href={`${project.link ? project.link : 'https://google.com'}`} 
                             target="_blank"
                             className="btn btn-primary hover:btn-success"
-                            ref={(el) => projectBtnRefs.current[idx] = el}
+                            ref={(el) => { projectBtnRefs.current[idx] = el; }}
                             onMouseEnter={() => handleProjectBtnMouseEnter(idx)}
                             onMouseLeave={() => handleProjectBtnMouseLeave(idx)}
                           >
@@ -92,7 +92,7 @@ export default function WindowProject({ loading }: PageProps){
                     href={`#${idx}`} 
                     onClick={() => setActiveButton(idx)} 
                     className={`btn btn-xs hover:btn-success ${activeButton === idx ? '!bg-success !text-success-content' : ''}`}
-                    ref={(el) => navBtnRefs.current[idx] = el}
+                    ref={(el) => { navBtnRefs.current[idx] = el; }}
                     onMouseEnter={() => handleNavBtnMouseEnter(idx)}
                     onMouseLeave={() => handleNavBtnMouseLeave(idx)}
                   >
