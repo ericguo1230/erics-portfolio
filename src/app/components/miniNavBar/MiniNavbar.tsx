@@ -38,7 +38,7 @@ export default function MiniNavbar({ handleClose, theme }: { handleClose: () => 
     return (
         <Backdrop onClick={handleClose} >
             <motion.div 
-                className="fixed top-13 left-0 h-full w-45 lg:w-58 bg-base-200 shadow-lg flex flex-col items-start justify-between pt-6 pb-8 pl-2 pr-2 z-50"
+                className="fixed top-13 left-0 h-full w-45 md:w-58 bg-base-200 shadow-lg flex flex-col items-start justify-between pt-6 pb-8 pl-2 pr-2 z-50"
                 variants={popLeft}
                 initial="hidden"
                 animate="visible"
