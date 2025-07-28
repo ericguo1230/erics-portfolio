@@ -41,7 +41,9 @@ export default function About() {
                     
                     >
                         <div className="timeline-middle md:flex flex-col items-center inline-flex">
-                            <time className="hidden md:inline font-mono text-base-content italic md:timeline-middle timeline-start">{exp.period}</time>
+                            <div className="hidden md:inline min-w-30">
+                                <time className=font-mono text-base-content italic md:timeline-middle timeline-start">{exp.period}</time>
+                            </div>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
@@ -57,7 +59,7 @@ export default function About() {
                         </div>
                         <div 
                             tabIndex={idx}
-                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 lg:!w-150 md:mt-15 ${idx % 2 === 0 ? (idx === 4 ? 'md:-mr-0' : 'md:-mr-10') : 'md:-ml-10'}`}
+                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 lg:!w-150 md:mt-15 ${idx % 2 === 0 ? 'md:-mr-5' : 'md:-ml-5'}`}
                         >
                             <input 
                                 type="checkbox" 
