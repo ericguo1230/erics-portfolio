@@ -47,7 +47,7 @@ export default function WindowProject({ loading }: PageProps){
               <span className="loading loading-spinner loading-xl"></span>
             ) : 
             <>
-              <div className="carousel lg:w-260 md:w-full">
+              <div className="carousel md:w-[95%]">
                 {projects.map((project, idx) => (
                   <div key={idx} id={`${idx}`} className="carousel-item w-full">
                     <div className="card card-side bg-base-100">

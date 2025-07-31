@@ -15,8 +15,8 @@ export default function About() {
             {
             scale: 1,
             opacity: 1,
-            duration: 2,
-            stagger: -1,
+            duration: 1,
+            stagger: -0.75,
             y: -20,
             ease: "back.out(1.7)",
         });
@@ -41,7 +41,7 @@ export default function About() {
                     
                     >
                         <div className="timeline-middle md:flex flex-col items-center inline-flex">
-                            <time className="hidden md:inline font-mono text-base-content italic md:timeline-middle timeline-start">{exp.period}</time>
+                            <time className="hidden md:inline font-mono text-base-content italic md:timeline-middle timeline-start w-45 text-center">{exp.period}</time>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
@@ -57,7 +57,7 @@ export default function About() {
                         </div>
                         <div 
                             tabIndex={idx}
-                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 lg:!w-150 md:mt-15 ${idx % 2 === 0 ? (idx === 4 ? 'md:-mr-0' : 'md:-mr-10') : 'md:-ml-10'}`}
+                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 lg:!w-150 md:mt-15 ${idx % 2 === 0 ? 'md:-mr-10' : 'md:-ml-10'}`}
                         >
                             <input 
                                 type="checkbox" 
@@ -70,7 +70,7 @@ export default function About() {
                             >
                                 <time className="md:hidden italic md:timeline-middle timeline-start">{exp.period}</time>
                                 <img
-                                    className="md:w-80 md:h-80 w-40 h-40 object-contain items-center"
+                                    className="md:w-40 md:h-40 w-30 h-30 object-contain items-center"
                                     src = {exp.logo}
                                 />
                                 <h1 className="font-bold text-2xl pt-2">{exp.company}</h1>

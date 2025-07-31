@@ -36,7 +36,7 @@ export default function Home() {
               y: 20,
               stagger: 0.1,
               ease: "power2.out",
-            }, "<2.5")
+            }, "<5")
             .fromTo(".my-button", {opacity: 0}, {
               scale: 1,
               opacity: 1,
