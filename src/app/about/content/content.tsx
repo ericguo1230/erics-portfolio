@@ -56,7 +56,7 @@ const experiences: Experiences = [
     ]
   },
   {
-    company: "Joined University College Dragon Boat Club!",
+    company: "University College Dragon Boat Club",
     role: "Paddler",
     period: "Feb 2022",
     summary: "Joined Competitive Dragon Boat Club at UofT!",
@@ -65,7 +65,8 @@ const experiences: Experiences = [
     details: [
         "Competed in several regattas and finished top in many",
         "Traveled to Montreal to compete in National Championship",
-        "Developed love of working out! Started training beginners"
+        "Developed love of working out! Started training beginners",
+        "Won many competitive university level races!"
     ]
   },
   {
