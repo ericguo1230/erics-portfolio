@@ -11,8 +11,8 @@ export default function PhoneProject({ loading }: PageProps){
             {loading ? (
               <span className="loading loading-ring loading-xl"></span>
             ) : 
-            <>
-              <div className={`carousel carousel-vertical round-box max-h-${div_height} w-full p-5`}>
+            <div className="max-h-120 flex w-full justify-center">
+              <div className={`carousel carousel-vertical round-box h-${div_height} w-full p-5`}>
                 {projects.map((project, idx) => (
                   <div key={idx} id={`${idx}`} className={`carousel-item max-h-${div_height} w-full flex flex-col overflow-auto`}>
                     <div className="card bg-base-100 image-full w-full shadow-sm">
@@ -46,7 +46,7 @@ export default function PhoneProject({ loading }: PageProps){
                   </div>
                 ))}
               </div>
-            </>
+            </div>
             }
         </>
     );
