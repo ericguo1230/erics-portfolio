@@ -29,14 +29,14 @@ export default function Home() {
           const tl = gsap.timeline();
           let split = SplitText.create(".intro", { type: "words", mask:"words" });
     
-          tl.fromTo(".window-content", {opacity: 0}, {opacity: 1, duration: 1})
+          tl.fromTo(".window-content", {opacity: 0}, {opacity: 1, duration: 2})
             .from(split.words, {
               duration: 1,
               opacity: 0,
               y: 20,
               stagger: 0.1,
               ease: "power2.out",
-            }, "<5")
+            }, "<2")
             .fromTo(".my-button", {opacity: 0}, {
               scale: 1,
               opacity: 1,
