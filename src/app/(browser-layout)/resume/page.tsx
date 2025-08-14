@@ -12,7 +12,7 @@ export default function Resume() {
                         <span className="loading loading-ring loading-xl md:hidden"></span>
                     </>
                 ) : (
-                    <div className="items-center justify-items-center md:w-200 md:h-150 overflow-auto w-100 h-195">
+                    <div className="items-center justify-items-center md:w-200 md:h-150 overflow-auto w-90 h-150">
                         <iframe src="Eric-Resume.pdf" className="h-full w-full" />
                     </div>
                 )}
