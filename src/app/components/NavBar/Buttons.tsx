@@ -10,7 +10,7 @@ interface NavbarButtonProps {
 export default function NavbarButton({href, title, currentPath}: NavbarButtonProps) {
 
     return (
-        <Link href={href} className={`tab lg:w-40 text-lg flex justify-start ${currentPath === href ? 'tab-active' : ''}`}>
+        <Link href={href} className={`tab lg:w-40 text-lg text-warning flex justify-start ${currentPath === href ? 'tab-active' : ''}`}>
             {title}
         </Link>
     )

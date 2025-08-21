@@ -19,7 +19,7 @@ export default function Navbar() {
 
     return (
         <>
-            <div className="navbar bg-base-100 shadow-lg sticky top-0 z-150">
+            <div className="navbar bg-accent shadow-lg sticky top-0 z-150">
                 <div className="flex-none">
                     <button 
                         className="btn btn-square btn-ghost"
@@ -29,11 +29,11 @@ export default function Navbar() {
                     </button>
                 </div>
                 <div className="navbar-start">
-                    <Link href='/'className={`btn btn-ghost text-2xl font-mono inline-flex`}>
+                    <Link href='/'className={`btn btn-ghost text-accent-content hover:bg-warning text-2xl font-mono inline-flex`}>
                         Eric's Portfolio
                     </Link>
                 </div>
-                { !miniNav && <div className="navbar-center tabs hidden tabs-lift lg:flex font-mono">
+                { !miniNav && <div className="navbar-center tabs text-accent-content hidden tabs-lift lg:flex font-mono hover:text-primary">
                     <NavbarButton href={'/about'} title={'About'} currentPath={currentPath} />
                     <NavbarButton href={'/projects'} title={'Projects'} currentPath={currentPath} />
                     <NavbarButton href={'/blog'} title={'Blog'} currentPath={currentPath} />
