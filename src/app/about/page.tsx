@@ -41,7 +41,7 @@ export default function About() {
                     
                     >
                         <div className="timeline-middle md:flex flex-col items-center inline-flex">
-                            <time className="hidden md:inline font-mono text-base-content italic md:timeline-middle timeline-start w-45 text-center">{exp.period}</time>
+                            <time className="hidden md:inline font-mono text-base-content italic md:timeline-middle timeline-start w-50 text-center">{exp.period}</time>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
