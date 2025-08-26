@@ -7,10 +7,11 @@ const experiences: Experiences = [
     timeline: "end",
     logo: "rbcborealis-logo.png",
     details: [
-        "Developed a YAML CI/CD pipeline in GitHub to deploy WEB API and Dagster Workspace to QA OCP Environment and run image safety scans",
-        "Leverage layering techniques and analysis to optimize Docker images, reducing image size by 50% and improving deployment speed.",
-        "Develop middleware for Web API service to serve ATOM model embeddings and implement OAuth2.0 authentication in under 100ms and performed unit and load testing with Pytest and Postman",
-        "Building Dagster pipelines to move client data to Amazon S3 & Node in a PyArrow and Parquet format to allow for efficient reading and querying with DuckDB in downstream applications",
+        "Built CI/CD pipelines in GitHub deploying products to Kubernetes with Docker, scanning JFrog images and optimizing layers to save 10GB in image space",
+        "Built REST API w/ FastAPI/Starlette, evaluate OAuth2.0 vs mTLS to serve embeddings <100ms on GCP",
+        "Optimized API performance by load testing with Postman, scaling CPUs and streamlining response payloads",
+        "Collaborated with ML researchers to develop Python Dagster pipelines streaming terabytes of client data to Amazon S3 & Node in Apache Arrow & Parquet, enabling efficient Postgres querying with DuckDB",
+        "Trained ML models in PyTorch on monthly data pulls utilizing parallel processing and compute for efficiency, running experiments using SLURM for resource allocation",
     ]
   },
   {
