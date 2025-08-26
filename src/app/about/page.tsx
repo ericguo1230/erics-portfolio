@@ -57,7 +57,7 @@ export default function About() {
                         </div>
                         <div 
                             tabIndex={idx}
-                            className={`collapse collapse-arrow timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 lg:!w-150 md:mt-15 ${idx % 2 === 0 ? 'md:-mr-10' : 'md:-ml-10'}`}
+                            className={`collapse shadow-lg border timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 lg:!w-150 md:mt-15 ${idx % 2 === 0 ? 'md:-mr-10' : 'md:-ml-10'}`}
                         >
                             <input 
                                 type="checkbox" 
