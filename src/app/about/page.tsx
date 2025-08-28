@@ -23,7 +23,7 @@ export default function About() {
     }, [path]);
 
 
-    const handleCheckboxChange = (idx: number, isChecked: boolean) => {
+    const handleToggle = (idx: number, isChecked: boolean) => {
         setCheckedItems(prev => {
             let newCheckedItems = [...prev];
             newCheckedItems[idx] = isChecked;
@@ -56,17 +56,23 @@ export default function About() {
                             </svg>
                         </div>
                         <div 
-                            tabIndex={idx}
+                            tabIndex={0}
                             className={`collapse shadow-lg border timeline-${idx % 2 === 0 ? 'start' : 'end'} bg-base-100 lg:!w-150 md:mt-15 ${idx % 2 === 0 ? 'md:-mr-10' : 'md:-ml-10'}`}
                         >
                             <input 
                                 type="checkbox" 
-                                className="peer" 
+                                className="collapse-toggle sr-only" 
                                 checked={checkedItems[idx]}
-                                onChange={(e) => handleCheckboxChange(idx, e.target.checked)}
+                                onChange={() => {}}
+                                aria-hidden="true"
                             />
                             <div 
-                                className={`collapse-title font-mono bg-base-100 text-base-content peer-checked:bg-success peer-checked:text-success-content text-center flex flex-col items-center`}
+                                className={`collapse-title font-mono bg-base-100 text-base-content peer-checked:bg-success peer-checked:text-success-content text-center flex flex-col items-center cursor-pointer touch-manipulation ${checkedItems[idx] ? 'bg-success text-success-content' : ''}`}
+                                onClick={() => handleToggle(idx, !checkedItems[idx])}
+                                tabIndex={0}
+                                role="button"
+                                aria-expanded={checkedItems[idx]}
+                                aria-controls={`collapse-content-${idx}`}
                             >
                                 <time className="md:hidden italic md:timeline-middle timeline-start">{exp.period}</time>
                                 <img
@@ -75,10 +81,10 @@ export default function About() {
                                 />
                                 <h1 className="font-bold text-2xl pt-2">{exp.company}</h1>
                                 <div className="text-m font-semibold">{exp.role}</div>
-                                <div className="text-sm">{exp.summary}</div>
+                                {!checkedItems[idx] && <div className="text-sm peer-checketext-warning">{exp.summary}</div>}
                             </div>
                             
-                            <div className='collapse-content text-sm pt-2 font-mono bg-base-100'>
+                            <div className='collapse-content text-sm font-mono peer-checked:bg-base-100 mt-2'>
                                 {exp.details.map((detail, detailIdx) => (
                                     <p key={detailIdx} className="inline-flex mb-1 text-base-content">
                                         <span className="text-success text-m mr-2">
