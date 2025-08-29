@@ -15,7 +15,7 @@ const projects: Projects[] = [
         name: "Scriptorium",
         date: "Sept 2024 - Dec 2024",
         img: 'scriptorium-logo.png',
-        link: "https://github.com/ericguo1230/csc309-scriptorium-pp2",
+        link: "https://github.com/ericguo1230/project_scriptorium",
         description: "Created Next.js Website that allowed users to execute code and create blogs using React, Typescript, Prisma",
         summary: [
             "Developed a code execution feature in Next.js and TypeScript, supporting multi-language code execution with syntax highlighting.",
