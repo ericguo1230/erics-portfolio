@@ -17,7 +17,7 @@ export interface HomeProps {
     title: string;
 }
 
-const intro = "Hi, I'm Eric! I'm a student studying Statistics and Computer Science with a passion for Machine Learning and Software and Data Engineering! Connect with me on LinkedIn or check out my projects below!";
+const intro = "Hi, I'm Eric! I'm studying Statistics and Computer Science with 16+ months of experience in DevOps, Data Engineering, Backend APIs, and Testing. I’m passionate about Machine Learning and Software Engineering—connect with me on LinkedIn or check out my projects!";
 const button = "my-button";
 const title = "Welcome to Eric's Portfolio";
 
