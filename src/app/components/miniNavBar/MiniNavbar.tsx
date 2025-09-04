@@ -6,13 +6,17 @@ import Buttons from '@/app/components/miniNavBar/Buttons';
 export default function MiniNavbar({ handleClose, theme }: { handleClose: () => void, theme: string}) {
 
     useEffect(() => {
+        document.body.style.overflow = "hidden";
         const handleResize = () => {
             if (window.innerWidth > 768) {
                 handleClose();
             }
         }
         window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        return () => {
+            document.body.style.overflow = "";
+            window.removeEventListener('resize', handleResize);
+        }
     }, [handleClose]);
 
     const popLeft: Variants = {
