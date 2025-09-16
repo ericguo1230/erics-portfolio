@@ -1,5 +1,9 @@
 'use client';
 import { usePageContext } from '@/app/contexts/PageInfoContext'
+import WindowHomePage from '@/app/(browser-layout)/contact/WindowPage';
+
+const intro= "Contact me!"
+const email = "ericc.guo@mail.utoronto.ca"
 
 export default function BlogPage() {
     const { loading } = usePageContext();
@@ -13,10 +17,9 @@ export default function BlogPage() {
                 </>
             )
             : (
-                <>
-                    <h1 className="text-4xl text-center font-bold mb-8">Blog</h1>
-                    <p className="text-lg text-center">This page is under construction. Stay tuned for updates!</p>
-                </>
+                <div className="h-full hidden md:block">
+                    <WindowHomePage />
+                </div>
             )}
         </>
     );
