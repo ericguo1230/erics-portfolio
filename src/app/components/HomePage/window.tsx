@@ -25,8 +25,7 @@ export default function WindowHome({ loading, intro, button, title }: HomeProps)
               {intro}
             </p>
             <div className="flex justify-center gap-6 m-8">
-              <Button button={button} ref="https://www.linkedin.com/in/ericguo1230/" content="LinkedIn" />
-              <Button button={button} ref="https://github.com/ericguo1230" content="GitHub" />
+              <Button button={button} ref="/contact" content="Contact Me!" isNew={true} internal={true} />
               <Button button={button} ref="/resume" content="Resume" isNew={true} internal={true}/>
               <Button button={button} ref="/fun_facts" content="Learn More!" isNew={true} internal={true}/>
             </div>

@@ -32,11 +32,8 @@ export function PageProvider({ children,}: { children: ReactNode,}) {
 
     useEffect(() => {
         if (mounted) {
-            console.log('Path changed to:', currentPath);
             setLoading(true);
-            console.log(loading)
             const timer = setTimeout(() => {
-                console.log('waiting')
                 setLoading(false);
             }, 1500);
 

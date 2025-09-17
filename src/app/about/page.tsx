@@ -1,14 +1,19 @@
 'use client';
 import experiences from '@/app/about/content/content';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { usePageContext } from '@/app/contexts/PageInfoContext';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 export default function About() {
     const { path } = usePageContext();
     const [ checkedItems, setCheckedItems ] = useState<boolean[]>(
         new Array(experiences.length).fill(false)
     );
+    const listRef = useRef<HTMLUListElement>(null);
+    const [ activeIdx, setActiveIdx ] = useState<number>(0);
 
     useEffect(() => {
         gsap.fromTo(".experience-item", {opacity: 0},
@@ -20,6 +25,12 @@ export default function About() {
             y: -20,
             ease: "back.out(1.7)",
         });
+        window.scrollTo(0, document.body.scrollHeight);
+        gsap.to(window, {
+            scrollTo: {y: 0},
+            duration: 6,
+            ease: "power2.inOut",
+        })
     }, [path]);
 
 
@@ -29,16 +40,52 @@ export default function About() {
             newCheckedItems[idx] = isChecked;
             return newCheckedItems
         });
+        const element = document.querySelectorAll('.experience-item')[idx];
+        if (checkedItems[idx] === false) {
+            let tmp = activeIdx;
+            setActiveIdx(idx);
+            gsap.to(window, {
+                duration: 1 * Math.abs(tmp - idx),
+                scrollTo: {y: element, offsetY: 0},
+                ease: "power2.inOut",
+            });
+        }
     };
+
+    useEffect(() =>{
+        const list = listRef.current;
+        const items = list?.querySelectorAll(".experience-item");
+
+        const handleWheel = (event: WheelEvent) => {
+            event.preventDefault();
+            let newIdx;
+
+            if (event.deltaY > 0) {
+                newIdx = Math.min(experiences.length - 1, activeIdx + 1);
+            }else if (event.deltaY < 0){
+                newIdx = Math.max(0, activeIdx - 1);
+            }else{
+                return;
+            }
+            setActiveIdx(newIdx);
+            items?.[newIdx]?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+            });
+        }        
+        list?.addEventListener("wheel", handleWheel, { passive: false });
+        return () => {
+            list?.removeEventListener("wheel", handleWheel);
+        }
+    }, [activeIdx]);
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-base-200">
-            <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+            <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical overflow-y-auto" ref={listRef} tabIndex={0}>
                 {experiences.map((exp, idx) => (
                     <li 
                         key={idx} 
                         className={`timeline-item cursor-pointer rounded-lg p-2 transition-colors experience-item`}
-                    
                     >
                         <div className="timeline-middle md:flex flex-col items-center inline-flex">
                             <time className="hidden md:inline font-mono text-base-content italic md:timeline-middle timeline-start w-50 text-center">{exp.period}</time>

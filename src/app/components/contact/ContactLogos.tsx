@@ -78,7 +78,7 @@ interface GitHubLogoProps {
 }
 
 const GitHubLogo = forwardRef<SVGSVGElement, GitHubLogoProps>(
-  ({ size = 24, className = '', color = '#FF3300' }, ref) => {
+  ({ size = 24, className = '', color = 'gray' }, ref) => {
     return (
       <svg 
         ref={ref}
@@ -93,7 +93,7 @@ const GitHubLogo = forwardRef<SVGSVGElement, GitHubLogoProps>(
           className="drawable github-path"
           fill="none"
           stroke={color}
-          strokeWidth="1"
+          strokeWidth="1.25"
           d="M12 0.5C5.37 0.5 0 5.78 0 12.292c0 5.211 3.438 9.63 8.205 11.188c0.6 0.111 0.82-0.254 0.82-0.567c0-0.28-0.01-1.022-0.015-2.005c-3.338 0.711-4.042-1.582-4.042-1.582c-0.546-1.361-1.335-1.725-1.335-1.725c-1.087-0.731 0.084-0.716 0.084-0.716c1.205 0.082 1.838 1.215 1.838 1.215c1.07 1.803 2.809 1.282 3.495 0.981c0.108-0.763 0.417-1.282 0.76-1.577c-2.665-0.295-5.466-1.309-5.466-5.827c0-1.287 0.465-2.339 1.235-3.164c-0.135-0.298-0.54-1.497 0.105-3.121c0 0 1.005-0.316 3.3 1.209c0.96-0.262 1.98-0.392 3-0.398c1.02 0.006 2.04 0.136 3 0.398c2.28-1.525 3.285-1.209 3.285-1.209c0.645 1.624 0.24 2.823 0.12 3.121c0.765 0.825 1.23 1.877 1.23 3.164c0 4.53-2.805 5.527-5.475 5.817c0.42 0.354 0.81 1.077 0.81 2.182c0 1.578-0.015 2.846-0.015 3.229c0 0.309 0.21 0.678 0.825 0.56C20.565 21.917 24 17.502 24 12.292C24 5.78 18.627 0.5 12 0.5z"
         />
       </svg>
@@ -109,14 +109,14 @@ interface LinkedInLogoProps {
 }
 
 const LinkedInLogo = forwardRef<SVGSVGElement, LinkedInLogoProps>(
-  ({ size = 24, className = '', backgroundColor = '#0077B5', iconColor = 'gray' }, ref) => {
+  ({ size = 24, className = '', backgroundColor = 'black', iconColor = 'white' }, ref) => {
     return (
       <svg 
         ref={ref}
         width={size} 
         height={size} 
         viewBox="0 0 24 24" 
-        fill="none" 
+        fill="blue" 
         xmlns="http://www.w3.org/2000/svg"
         className={className}
       >
@@ -124,7 +124,7 @@ const LinkedInLogo = forwardRef<SVGSVGElement, LinkedInLogoProps>(
         <path 
           className="drawable linkedin-border"
           d="M4 2 L20 2 Q22 2 22 4 L22 20 Q22 22 20 22 L4 22 Q2 22 2 20 L2 4 Q2 2 4 2 Z" 
-          fill="none" 
+          fill="#0077B5" 
           stroke={backgroundColor} 
           strokeWidth="2"
         />
