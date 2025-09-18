@@ -45,7 +45,7 @@ export default function MiniNavbar({ handleClose, theme }: { handleClose: () => 
     return (
         <Backdrop onClick={handleClose} >
             <motion.div 
-                className="fixed top-13 left-0 h-full w-50 md:w-75 bg-base-200 shadow-lg flex flex-col items-start justify-between pt-6 pb-8 pl-2 pr-2 z-50"
+                className="fixed top-13 left-0 h-full w-60 md:w-75 bg-base-200 shadow-lg flex flex-col items-start justify-between pt-6 pb-8 pl-2 pr-2 z-50"
                 variants={popLeft}
                 initial="hidden"
                 animate="visible"
@@ -58,7 +58,7 @@ export default function MiniNavbar({ handleClose, theme }: { handleClose: () => 
                 </div>
                 <div className="mb-12 md:ml-2 md:text-sm text-xs">
                     <div className="flex"><img src="globe.svg" className='w-4 h-4 mr-1 md:mr-2' /><p className="font-mono"> (343)-883-8189 </p></div>
-                    <div className="flex"><img src="window.svg" className='w-4 h-4 mr-1 md:mr-2' /><p className="font-mono"> eric.guo1230@gmail.com </p></div>
+                    <div className="flex"><img src="window.svg" className='w-4 h-4 mr-1 md:mr-2' /><p className="font-mono"> ericc.guo@mail.utoronto.ca </p></div>
                     <p className="font-mono">Theme: <span className="text-primary">{theme}</span></p>
                 </div>
             </motion.div>

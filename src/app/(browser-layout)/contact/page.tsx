@@ -1,6 +1,6 @@
 'use client';
 import { usePageContext } from '@/app/contexts/PageInfoContext'
-import WindowHomePage from '@/app/(browser-layout)/contact/WindowPage';
+import WindowHomePage from '@/app/(browser-layout)/contact/ContactPage';
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
@@ -127,8 +127,8 @@ export default function ContactPage({
             )
             : (
                 <>
-                    <div className={`h-full hidden md:block`}>
-                        <WindowHomePage instagramRef={instagramRef} githubRef={githubRef} linkedinRef={linkedinRef} containerRef={containerRef} size={60} email={email}/>
+                    <div className={`h-full block`}>
+                        <WindowHomePage instagramRef={instagramRef} githubRef={githubRef} linkedinRef={linkedinRef} containerRef={containerRef} size={70} email={email}/>
                     </div>
                 </>
             )}
