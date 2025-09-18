@@ -4,6 +4,10 @@
   dracula --dark;
 }
 
+body.navbar-open {
+    overflow: hidden !important;
+}
+
 .backdrop {
   position: fixed;
   top: 0;

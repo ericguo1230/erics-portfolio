@@ -14,7 +14,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-base-100 font-sans antialiased">
         <PageProvider>
           <Navbar />
-          <main className="min-'useh-screen">
+          <main className="min-h-screen">
             {children}
           </main>
         </PageProvider>

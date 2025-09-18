@@ -36,7 +36,7 @@ export default function Navbar() {
                 { !miniNav && <div className="navbar-center tabs text-accent-content hidden tabs-lift lg:flex font-mono hover:text-primary">
                     <NavbarButton href={'/about'} title={'About'} currentPath={currentPath} />
                     <NavbarButton href={'/projects'} title={'Projects'} currentPath={currentPath} />
-                    <NavbarButton href={'/blog'} title={'Blog'} currentPath={currentPath} />
+                    <NavbarButton href={'/contact'} title={'Contact'} currentPath={currentPath} />
                 </div>}
                 <div className="navbar-end">
                     <label className="toggle text-base-content">
