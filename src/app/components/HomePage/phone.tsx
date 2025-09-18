@@ -19,7 +19,7 @@ export default function PhoneHome({ loading, intro, button, title }: HomeProps) 
                     />
                     <h1 className="text-3xl font-bold mb-2 underline text-success">{title}</h1>
                 </div>
-                <p className="intro text-l text-base-content mb-6 mt-4">
+                <p className="intro text-m text-base-content mb-2 mt-2">
                     {intro}
                 </p>
                 <div className="flex justify-center gap-1 m-2">
