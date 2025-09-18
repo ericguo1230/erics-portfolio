@@ -19,15 +19,8 @@ export interface ContactPageProps {
   email: string;
 }
 
-export interface AnimationProps {
-  triggerAnimation?: boolean;
-  onAnimationComplete?: () => void;
-}
-
-export default function ContactPage({
-    triggerAnimation=true,
-    onAnimationComplete
-}: AnimationProps) {
+// Next.js page component - no props expected
+export default function ContactPage() {
     const instagramRef = useRef<SVGSVGElement>(null);
     const githubRef = useRef<SVGSVGElement>(null);
     const linkedinRef = useRef<SVGSVGElement>(null);
@@ -46,7 +39,7 @@ export default function ContactPage({
 
         // Create master timeline
         const masterTimeline = gsap.timeline({
-            onComplete: onAnimationComplete
+            onComplete: () => {} // Remove the callback since no prop is passed
         });
 
         // Instagram animation
@@ -84,7 +77,6 @@ export default function ContactPage({
 
     const { loading } = usePageContext();
 
-
     useEffect(() => {
         let email = SplitText.create(".contact", {type: "chars"})
         const timeline = gsap.timeline();
@@ -103,17 +95,20 @@ export default function ContactPage({
             stagger: 0.01,
             ease: "power2.out",
         });
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-            if (entry.isIntersecting && triggerAnimation && !loading) {
-                animateLogos();
-                observer.unobserve(entry.target);
-            }
+                if (entry.isIntersecting && !loading) { // Remove triggerAnimation since it's not a prop
+                    animateLogos();
+                    observer.unobserve(entry.target);
+                }
             });
         }, { threshold: 0.5 });
+        
         if (containerRef.current) {
             observer.observe(containerRef.current);
         }
+        
         return () => observer.disconnect();
     }, [loading]);
 
@@ -128,7 +123,14 @@ export default function ContactPage({
             : (
                 <>
                     <div className={`h-full block`}>
-                        <WindowHomePage instagramRef={instagramRef} githubRef={githubRef} linkedinRef={linkedinRef} containerRef={containerRef} size={70} email={email}/>
+                        <WindowHomePage 
+                            instagramRef={instagramRef} 
+                            githubRef={githubRef} 
+                            linkedinRef={linkedinRef} 
+                            containerRef={containerRef} 
+                            size={70} 
+                            email={email}
+                        />
                     </div>
                 </>
             )}
