@@ -42,42 +42,14 @@ export default function About() {
         });
         const element = document.querySelectorAll('.experience-item')[idx];
         if (checkedItems[idx] === false) {
-            let tmp = activeIdx;
             setActiveIdx(idx);
             gsap.to(window, {
-                duration: 1 * Math.abs(tmp - idx),
+                duration: 1,
                 scrollTo: {y: element, offsetY: 0},
                 ease: "power2.inOut",
             });
         }
     };
-
-    useEffect(() =>{
-        const list = listRef.current;
-        const items = list?.querySelectorAll(".experience-item");
-
-        const handleWheel = (event: WheelEvent) => {
-            event.preventDefault();
-            let newIdx;
-
-            if (event.deltaY > 0) {
-                newIdx = Math.min(experiences.length - 1, activeIdx + 1);
-            }else if (event.deltaY < 0){
-                newIdx = Math.max(0, activeIdx - 1);
-            }else{
-                return;
-            }
-            setActiveIdx(newIdx);
-            items?.[newIdx]?.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center',
-            });
-        }        
-        list?.addEventListener("wheel", handleWheel, { passive: false });
-        return () => {
-            list?.removeEventListener("wheel", handleWheel);
-        }
-    }, [activeIdx]);
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-base-200">
