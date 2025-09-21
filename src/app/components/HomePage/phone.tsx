@@ -14,7 +14,7 @@ export default function PhoneHome({ loading, intro, button, title }: HomeProps) 
                         src="kaitlyn's_hs.jpg"
                         alt="Profile picture"
                         width={200}
-                        height={200}
+                        height={250}
                         className="mx-auto rounded-full mb-4"
                     />
                     <h1 className="text-3xl font-bold mb-2 underline text-success">{title}</h1>
