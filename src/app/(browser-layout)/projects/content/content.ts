@@ -31,8 +31,8 @@ const projects: Projects[] = [
         link: "https://www.kaggle.com/code/ericguo1230/knn-for-alzheimers",
         summary: [
             "Conducted data cleaning on a large dataset, performing exploratory analysis & visualizations w/ Pandas.",
-            "Collaborated with 3 team members to create ML models trained with sklearn, including weighted KNN and Random Forest. Achieving an accuracy of 97%",
-            "Applied statistical techniques such as cross-validation, stepwise feature selection, and fine-tuned model parameters to optimize performance.",
+            "Collaborated with 3 team members to create ML models including weighted KNN and Random Forest. Achieving an accuracy of 97%",
+            "Applied statistical techniques like cross-validation, stepwise feature selection, and fine-tuned model parameters.",
         ]
     },
     {
