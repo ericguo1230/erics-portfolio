@@ -13,11 +13,11 @@ export default function WindowHome({ loading, intro, button, title }: HomeProps)
           <div>
             <div className="window-content">
               <Image
-                src="profile.png"
+                src="eric-headshot.jfif"
                 alt="Profile picture"
                 width={240}
                 height={240}
-                className="mx-auto rounded-full m-4"
+                className="mx-auto rounded-full m-4 object-right"
               />
               <h1 className="text-4xl font-bold mb-2 text-success underline">{title}</h1>
             </div>
