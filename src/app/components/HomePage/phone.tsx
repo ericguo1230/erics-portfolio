@@ -11,7 +11,7 @@ export default function PhoneHome({ loading, intro, button, title }: HomeProps) 
             <div className="bg-base-100 shadow-xl p-8 max-w-lg w-full text-center">
                 <div className="window-content">
                     <Image
-                        src="profile.png"
+                        src="kaitlyn's_hs.jpg"
                         alt="Profile picture"
                         width={200}
                         height={200}

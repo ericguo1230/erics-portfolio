@@ -30,9 +30,9 @@ const projects: Projects[] = [
         img: 'alzheimers-logo.png',
         link: "https://www.kaggle.com/code/ericguo1230/knn-for-alzheimers",
         summary: [
-            "Conducted data cleaning on a large dataset with over 32 variables, performing exploratory analysis and visualizations using Python and Pandas. Presented findings in PowerPoint.",
-            "Collaborated with three team members to evaluate multiple models trained with sklearn, including weighted K nearest neighbors and Random Forest Boosting, achieving a prediction accuracy of 95%.",
-            "Applied statistical techniques such as cross-validation and backward stepwise selection for feature selection and fine-tuned model parameters to optimize performance.",
+            "Conducted data cleaning on a large dataset, performing exploratory analysis & visualizations w/ Pandas.",
+            "Collaborated with 3 team members to create ML models trained with sklearn, including weighted KNN and Random Forest. Achieving an accuracy of 97%",
+            "Applied statistical techniques such as cross-validation, stepwise feature selection, and fine-tuned model parameters to optimize performance.",
         ]
     },
     {
