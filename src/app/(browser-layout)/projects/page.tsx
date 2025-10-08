@@ -7,6 +7,15 @@ export interface PageProps{
     loading: boolean,
 }
 
+export const language_to_color: {[key:string]: string} = {
+      "python": "badge-success",
+      "r": "badge-neutral",
+      "java": "badge-warning",
+      "typescript": "badge-info",
+      "sql": "badge-accent",
+      "sh": "badge-secondary",
+}
+
 export default function ProjectsPage() {
     const { loading } = usePageContext()
     return (

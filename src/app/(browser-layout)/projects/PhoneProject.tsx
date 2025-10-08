@@ -1,5 +1,5 @@
 'use client';
-import { PageProps } from "@/app/(browser-layout)/projects/page";
+import { PageProps, language_to_color } from "@/app/(browser-layout)/projects/page";
 import projects from '@/app/(browser-layout)/projects/content/content'
 
 const div_height = 120
@@ -32,7 +32,12 @@ export default function PhoneProject({ loading }: PageProps){
                             </p>
                           ))}
                         </div>
-                        <div className="justify-end">
+                        {project.languages && <div className="text-start text-accent text-bg-base">
+                          Languages: {project.languages.map((lang, langIdx) => (
+                            <div className={`badge ${language_to_color[lang.toLowerCase()] ? language_to_color[lang.toLowerCase()] : 'primary'} mr-2`} key={projects.length + langIdx}>{lang}</div>
+                          ))}
+                        </div>}
+                        <div className="justify-end mt-2">
                           <a
                             href={`${project.link ? project.link : 'https://google.com'}`}
                             target='_blank'

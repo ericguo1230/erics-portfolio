@@ -9,7 +9,9 @@ const projects: Projects[] = [
             "Used R to perform data preparation and model creation / fitting to predict Cocoa Price",
             "Tested models like ARIMA, ARIMAX, ARIMAX + GARCH and Random Forest Machine Learning models",
             "Performed complex data preparation steps such as differencing, BoxCox transformation and aggregating data"
-        ]
+        ],
+        languages: ["R", "Python"],
+        frameworks: ["Scikit-learn", "Pandas"]
     },
     {
         name: "Scriptorium",
@@ -20,8 +22,9 @@ const projects: Projects[] = [
         summary: [
             "Developed a code execution feature in Next.js and TypeScript, supporting multi-language code execution with syntax highlighting.",
             "Built and tested SQLite database & RESTful APIs with JWT authentication, integrated SwaggerUI for documentation, and used OAuth for secure user access.",
-            "Designed responsive frontend features with React.js, deployed with AWS",
-        ]
+        ],
+        languages: ["SH", "TypeScript", "SQL"],
+        frameworks: ["Next.js", "React", "Docker", "AWS", "Prisma"]
     },
     {
         name: "Predicting Alzheimer's Disease",
@@ -30,10 +33,11 @@ const projects: Projects[] = [
         img: 'alzheimers-logo.png',
         link: "https://www.kaggle.com/code/ericguo1230/knn-for-alzheimers",
         summary: [
-            "Conducted data cleaning on a large dataset, performing exploratory analysis & visualizations w/ Pandas.",
             "Collaborated with 3 team members to create ML models including weighted KNN and Random Forest. Achieving an accuracy of 97%",
             "Applied statistical techniques like cross-validation, stepwise feature selection, and fine-tuned model parameters.",
-        ]
+        ],
+        languages: ["Python"],
+        frameworks: ["Pandas", "Scikit-learn", "Matplotlib"]
     },
     {
         name: "Scamazon Marketplace",
@@ -44,9 +48,10 @@ const projects: Projects[] = [
         summary: [
             "Developed an online buy-sell marketplace app in Java, adhering to SOLID principles.",
             "Achieved 90% unit test coverage using JUnit for comprehensive application testing.",
-            "Implemented a registration feature with clean architecture and JQuery.",
             "Collaborated in a team of 8 using GitHub for version control and weekly online meetings for coordination.",
-        ]
+        ],
+        languages: ["Java"],
+        frameworks: ["JUnit", "JQuery"]
     }
 ]
 
@@ -57,6 +62,8 @@ interface Projects {
     link?: string;
     img?: string;
     summary: string[];
+    languages: string[];
+    frameworks: string[];
 }
 
 export default projects
