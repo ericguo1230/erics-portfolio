@@ -8,7 +8,6 @@ const projects: Projects[] = [
         summary: [
             "Used R to perform data preparation and model creation / fitting to predict Cocoa Price",
             "Tested models like ARIMA, ARIMAX, ARIMAX + GARCH and Random Forest Machine Learning models",
-            "Performed complex data preparation steps such as differencing, BoxCox transformation and aggregating data"
         ],
         languages: ["R", "Python"],
         frameworks: ["Scikit-learn", "Pandas"]
