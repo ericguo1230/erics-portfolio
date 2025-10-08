@@ -67,3 +67,12 @@ interface Projects {
 }
 
 export default projects
+
+export const language_to_color: {[key:string]: string} = {
+      "python": "badge-success",
+      "r": "badge-neutral",
+      "java": "badge-warning",
+      "typescript": "badge-info",
+      "sql": "badge-accent",
+      "sh": "badge-secondary",
+}

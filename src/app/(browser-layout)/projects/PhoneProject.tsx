@@ -1,6 +1,6 @@
 'use client';
-import { PageProps, language_to_color } from "@/app/(browser-layout)/projects/page";
-import projects from '@/app/(browser-layout)/projects/content/content'
+import { PageProps} from "@/app/(browser-layout)/projects/page";
+import projects, {language_to_color} from '@/app/(browser-layout)/projects/content/content'
 
 const div_height = 120
 
