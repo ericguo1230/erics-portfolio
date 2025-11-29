@@ -1,5 +1,18 @@
 const projects: Projects[] = [
     {
+        name: "Columns Game",
+        date: "Oct 2025 - Dec 2025",
+        description: "Designed Amazon-like marketplace application using Java and SOLID Principles",
+        img: "columns_gameplay.png",
+        link: "https://github.com/ericguo1230/course-project-scamazon-ca-group-118/tree/main",
+        summary: [
+            "Creating a Columns game using Assembly with features like piece rotation, line clearing, and gravity",
+            "Used memory-mapped I/O to interface with Bitmap Display and keyboard input for real-time gameplay",
+        ],
+        languages: ["Assembly"],
+        frameworks: ["Git", "Saturn"]
+    },
+    {
         name: "Forecasting Cocoa Price",
         date: "Feb 2025 - Apr 2025",
         description: "Using time series models and machine learning models to forecast cocoa price",
@@ -74,4 +87,5 @@ export const language_to_color: {[key:string]: string} = {
       "typescript": "badge-info",
       "sql": "badge-accent",
       "sh": "badge-secondary",
+      "assembly": "badge-error",
 }
