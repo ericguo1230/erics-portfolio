@@ -4,7 +4,7 @@ const projects: Projects[] = [
         date: "Oct 2025 - Dec 2025",
         description: "Designed Amazon-like marketplace application using Java and SOLID Principles",
         img: "columns_gameplay.png",
-        link: "https://github.com/ericguo1230/course-project-scamazon-ca-group-118/tree/main",
+        link: "https://github.com/ericguo1230/Columns-in-Assembly",
         summary: [
             "Creating a Columns game using Assembly with features like piece rotation, line clearing, and gravity",
             "Used memory-mapped I/O to interface with Bitmap Display and keyboard input for real-time gameplay",
