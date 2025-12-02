@@ -1,7 +1,8 @@
 'use client';
 import { usePageContext } from '@/app/contexts/PageInfoContext'
+import { useSessionContext } from "@/app/contexts/SessionContext";
 import WindowHomePage from '@/app/(browser-layout)/contact/ContactPage';
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 import SplitText from "gsap/SplitText";
@@ -76,8 +77,23 @@ export default function ContactPage() {
     };
 
     const { loading } = usePageContext();
+    const { hasVisitedContact } = useSessionContext();
+    const [isFirstVisit, setIsFirstVisit] = useState(!hasVisitedContact);
 
     useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        if (!hasVisitedContact) {
+            sessionStorage.setItem("hasVisitedContact", "true");
+            setIsFirstVisit(true);
+        }else{
+            setIsFirstVisit(false);
+        }
+
+    }, []);
+
+    useEffect(() => {
+        if (!isFirstVisit) return;
         let email = SplitText.create(".contact", {type: "chars"})
         const timeline = gsap.timeline();
         timeline.fromTo(".email", {opacity: 0},
@@ -114,7 +130,7 @@ export default function ContactPage() {
 
     return (
         <>
-            {loading ? (
+            {loading && isFirstVisit ? (
                 <>
                     <span className="loading loading-spinner loading-xl md:block hidden"></span>
                     <span className="loading loading-ring loading-xl md:hidden"></span>
