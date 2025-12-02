@@ -3,6 +3,7 @@ import experiences from '@/app/about/content/content';
 import { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { usePageContext } from '@/app/contexts/PageInfoContext';
+import { useSessionContext } from '@/app/contexts/SessionContext';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 gsap.registerPlugin(ScrollToPlugin);
@@ -14,23 +15,38 @@ export default function About() {
     );
     const listRef = useRef<HTMLUListElement>(null);
     const [ activeIdx, setActiveIdx ] = useState<number>(0);
+    const { hasVisitedAbout } = useSessionContext();
+    const [isFirstVisit, setIsFirstVisit] = useState(true);
 
     useEffect(() => {
-        gsap.fromTo(".experience-item", {opacity: 0},
-            {
-            scale: 1,
-            opacity: 1,
-            duration: 1,
-            stagger: -0.75,
-            y: -20,
-            ease: "back.out(1.7)",
-        });
-        window.scrollTo(0, document.body.scrollHeight);
-        gsap.to(window, {
-            scrollTo: {y: 0},
-            duration: 6,
-            ease: "power2.inOut",
-        })
+        if (typeof window === "undefined") return;
+        if (!hasVisitedAbout) {
+            sessionStorage.setItem("hasVisitedAbout", "true");
+            setIsFirstVisit(true);
+        }else{
+            setIsFirstVisit(false);
+        }
+
+    }, []);
+
+    useEffect(() => {
+        if (!hasVisitedAbout && isFirstVisit) {
+            gsap.fromTo(".experience-item", {opacity: 0},
+                {
+                scale: 1,
+                opacity: 1,
+                duration: 1,
+                stagger: -0.75,
+                y: -20,
+                ease: "back.out(1.7)",
+            });
+            window.scrollTo(0, document.body.scrollHeight);
+            gsap.to(window, {
+                scrollTo: {y: 0},
+                duration: 6,
+                ease: "power2.inOut",
+            })
+        }
     }, [path]);
 
 
