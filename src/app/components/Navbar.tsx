@@ -29,7 +29,7 @@ export default function Navbar() {
                     </button>
                 </div>
                 <div className="navbar-start">
-                    <Link href='/'className={`btn btn-ghost text-accent-content hover:bg-warning text-2xl font-mono inline-flex`}>
+                    <Link href='.'className={`btn btn-ghost text-accent-content hover:bg-warning text-2xl font-mono inline-flex`}>
                         Eric's Portfolio
                     </Link>
                 </div>
