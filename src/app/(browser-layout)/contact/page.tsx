@@ -78,7 +78,7 @@ export default function ContactPage() {
 
     const { loading } = usePageContext();
     const { hasVisitedContact } = useSessionContext();
-    const [isFirstVisit, setIsFirstVisit] = useState(true);
+    const [isFirstVisit, setIsFirstVisit] = useState(!hasVisitedContact);
 
     useEffect(() => {
         if (typeof window === "undefined") return;
@@ -93,7 +93,7 @@ export default function ContactPage() {
     }, []);
 
     useEffect(() => {
-        if (!isFirstVisit || hasVisitedContact ) return;
+        if (!isFirstVisit) return;
         let email = SplitText.create(".contact", {type: "chars"})
         const timeline = gsap.timeline();
         timeline.fromTo(".email", {opacity: 0},

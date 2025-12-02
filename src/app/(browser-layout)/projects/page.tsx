@@ -12,7 +12,7 @@ export interface PageProps{
 export default function ProjectsPage() {
     const { loading } = usePageContext()
     const { hasVisitedProjects } = useSessionContext();
-    const [isFirstVisit, setIsFirstVisit] = useState(true);
+    const [isFirstVisit, setIsFirstVisit] = useState(!hasVisitedProjects);
 
     useEffect(() => {
         if (typeof window === "undefined") return;

@@ -23,9 +23,9 @@ const button = "my-button";
 const title = "Welcome to Eric's Portfolio";
 
 export default function Home() {
-  const { loading } = usePageContext()
+  const { loading, path } = usePageContext()
   const { hasVisitedHome } = useSessionContext();
-  const [isFirstVisit, setIsFirstVisit] = useState(true);
+  const [isFirstVisit, setIsFirstVisit] = useState(!hasVisitedHome);
 
   useEffect(() => {
       if (typeof window === "undefined") return;
@@ -37,7 +37,7 @@ export default function Home() {
           setIsFirstVisit(false);
       }
 
-  }, []);
+  }, [path]);
 
   useEffect(() => {
         if (!loading && isFirstVisit) {

@@ -16,7 +16,7 @@ export default function About() {
     const listRef = useRef<HTMLUListElement>(null);
     const [ activeIdx, setActiveIdx ] = useState<number>(0);
     const { hasVisitedAbout } = useSessionContext();
-    const [isFirstVisit, setIsFirstVisit] = useState(true);
+    const [isFirstVisit, setIsFirstVisit] = useState(!hasVisitedAbout);
 
     useEffect(() => {
         if (typeof window === "undefined") return;
