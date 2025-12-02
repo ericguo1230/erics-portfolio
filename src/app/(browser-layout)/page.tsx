@@ -1,11 +1,12 @@
 'use client';
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import PhoneHome from "@/app/components/HomePage/phone";
 import WindowHome from "@/app/components/HomePage/window";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import Flip from "gsap/Flip"
 import { usePageContext } from "@/app/contexts/PageInfoContext";
+import { useSessionContext } from "@/app/contexts/SessionContext";
 
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(Flip);
@@ -22,10 +23,24 @@ const button = "my-button";
 const title = "Welcome to Eric's Portfolio";
 
 export default function Home() {
-  const { loading } = usePageContext()
+  const { loading, path } = usePageContext()
+  const { hasVisitedHome } = useSessionContext();
+  const [isFirstVisit, setIsFirstVisit] = useState(!hasVisitedHome);
 
   useEffect(() => {
-        if (!loading) {
+      if (typeof window === "undefined") return;
+
+      if (!hasVisitedHome) {
+          sessionStorage.setItem("hasVisitedHome", "true");
+          setIsFirstVisit(true);
+      }else{
+          setIsFirstVisit(false);
+      }
+
+  }, [path]);
+
+  useEffect(() => {
+        if (!loading && isFirstVisit) {
           const tl = gsap.timeline();
           let split = SplitText.create(".intro", { type: "words", mask:"words" });
     
@@ -51,12 +66,12 @@ export default function Home() {
     <>
       {/* Phone version - visible on small screens only */}
       <div className="md:hidden">
-        <PhoneHome loading={loading} intro={intro} button={button} title={title}/>
+        <PhoneHome loading={loading && isFirstVisit} intro={intro} button={button} title={title}/>
       </div>
 
       {/* Window version - visible on medium screens and above */}
       <div className="hidden md:block">
-        <WindowHome loading={loading} intro={intro} button={button} title={title} />
+        <WindowHome loading={loading && isFirstVisit} intro={intro} button={button} title={title} />
       </div>
     </>
   );
