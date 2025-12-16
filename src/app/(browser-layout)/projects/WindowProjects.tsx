@@ -47,7 +47,7 @@ export default function WindowProject({ loading }: PageProps){
               <span className="loading loading-spinner loading-xl"></span>
             ) : 
             <>
-              <div className="carousel md:w-[90%]">
+              <div className="carousel md:w-[70%] lg:w-[90%]">
                 {projects.map((project, idx) => (
                   <div key={idx} id={`${idx}`} className="carousel-item w-full">
                     <div className="card card-side bg-base-100">
@@ -59,7 +59,7 @@ export default function WindowProject({ loading }: PageProps){
                         />
                       </figure>
                       <div className="card-body w-2/5 flex flex-col h-full bg-base-200">
-                        <h1 className="text-center card-title text-3xl underline font-bold mb-4 w-full ">{project.name}</h1>
+                        <h1 className="text-center card-title text-3xl underline font-bold mb-4 w-full">{project.name}</h1>
                         <h2 className="text-start italic text-accent">{project.date}</h2>
                         <div className="text-start h-full">
                           {project.summary.map((detail, detailIdx) => (

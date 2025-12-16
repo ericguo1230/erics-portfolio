@@ -45,8 +45,8 @@ export default function BrowserLayout({
     }, [path]);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-base-200 font-mono">
-            <div className="mockup-browser bg-base-100 shadow-xl rounded-xl p-8 lg:w-280 md:w-full min-h-200 h-full text-center z-60 md:flex flex-col hidden">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-base-200 lg:overflow-x-hidden  font-mono">
+            <div className="mockup-browser bg-base-100 shadow-xl rounded-xl p-8 lg:w-280 md:overflow-x-hidden w-[90%] min-h-200 h-full text-center z-60 md:flex flex-col hidden">
                 {/* Toolbar stays at the top */}
                 <div className="mockup-browser-toolbar">
                     <div className="input">{homePath + path}</div>
