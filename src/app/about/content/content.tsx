@@ -2,7 +2,7 @@ const experiences: Experiences = [
     {
     company: "RBC Borealis",
     role: "Machine Learning Software Engineer",
-    period: "May 2025 - Present",
+    period: "May 2025 - Dec-2025",
     summary: "Working on ATOM Foundation model!",
     timeline: "end",
     logo: "rbcborealis-logo.png",
@@ -11,7 +11,6 @@ const experiences: Experiences = [
         "Developed CI/CD pipelines in GitHub Actions, deploying microservices to Kubernetes clusters with Docker, scanning images for vulnerabilities, and leveraging layering to reduce image size by up to 20GB",
         "Collaborated w/ stakeholders to design & test end-to-end Dagster ETL pipelines streaming TB-scale client data to AWS S3, transforming into Apache Arrow and Parquet files for efficient querying with DuckDB",
         "Conducted load testing and unit testing with Postman and PyTest writing scalable, async software",
-        "Develop and push production-ready code to a large codebase quicky and efficiently after identifying problem statements, outlining optimal solutions and receiving feedback from peers, stakeholders and mentors in PRs",
     ]
   },
   {
@@ -25,7 +24,6 @@ const experiences: Experiences = [
         "Developed a YAML CI/CD pipeline in GitLab to run unit tests for template naming convention across three international repositories",
         "Achieved a 97% test coverage by employing a test-driven development (TDD) approach using the PyTest framework and Regex",
         "Migrated Docker deployment of a company product to Kubernetes via Rancher using HELM charts running on Ubuntu, saving the company significant time by optimizing container orchestration.",
-        "Built and demonstrated CI/CD deployment scripts to an international team of 12, showcasing Rancher’s deployment and container management capabilities.",
     ]
   },
   {
@@ -53,7 +51,6 @@ const experiences: Experiences = [
         "Migrated IoT data from MongoDB to PostgreSQL using Node.js and Prisma, improving database efficiency by 30%",
         "Developed & tested RESTful APIs with JavaScript and Postman, ensuring system reliability and scalability.",
         "Streamlined data storage across multiple regions using SQL, reducing retrieval times by 15%.",
-        "Collaborated in daily standups to review project goals and track progress effectively"
     ]
   },
   {
