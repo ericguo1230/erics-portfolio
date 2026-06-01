@@ -1,12 +1,23 @@
 'use client'; 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { usePageContext } from './PageInfoContext';
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
+
+type VisitedPage = 'about' | 'projects' | 'contact' | 'home';
+const VISIT_STATE_VERSION = '2';
+const VISIT_STATE_VERSION_KEY = 'visitStateVersion';
+const VISITED_STORAGE_KEYS = {
+    about: 'hasVisitedAbout',
+    projects: 'hasVisitedProjects',
+    contact: 'hasVisitedContact',
+    home: 'hasVisitedHome',
+} as const;
 
 interface SessionContextType {
     hasVisitedAbout: boolean;
     hasVisitedProjects: boolean;
     hasVisitedContact: boolean;
     hasVisitedHome: boolean;
+    isSessionReady: boolean;
+    markVisited: (page: VisitedPage) => void;
 }
 
 const SessionContext = createContext<SessionContextType | null>(null);
@@ -24,37 +35,47 @@ export function SessionProvider({ children,}: { children: ReactNode,}) {
     const [hasVisitedProjects, setHasVisitedProjects] = useState(false);
     const [hasVisitedContact, setHasVisitedContact] = useState(false);
     const [hasVisitedHome, setHasVisitedHome] = useState(false);
-
-    const { path } = usePageContext();
+    const [isSessionReady, setIsSessionReady] = useState(false);
 
     useEffect(() => {
         if (typeof window === 'undefined' || !window.sessionStorage) return;
-        // This effect could be used to initialize session data from localStorage or cookies if needed
-        const visitedAbout = sessionStorage.getItem('hasVisitedAbout') === 'true';
-        const visitedProjects = sessionStorage.getItem('hasVisitedProjects') === 'true';
-        const visitedContact = sessionStorage.getItem('hasVisitedContact') === 'true';
-        const visitedHome = sessionStorage.getItem('hasVisitedHome') === 'true';
-        
-        // console.log("SessionContext initialized:", {
-        //     visitedAbout,
-        //     visitedProjects,
-        //     visitedContact,
-        //     visitedHome
-        // });
 
-        if (visitedAbout !== hasVisitedAbout){
-            setHasVisitedAbout(visitedAbout)
+        if (sessionStorage.getItem(VISIT_STATE_VERSION_KEY) !== VISIT_STATE_VERSION) {
+            Object.values(VISITED_STORAGE_KEYS).forEach((key) => {
+                sessionStorage.setItem(key, 'false');
+            });
+            sessionStorage.setItem(VISIT_STATE_VERSION_KEY, VISIT_STATE_VERSION);
         }
-        if (visitedProjects !== hasVisitedProjects){
-            setHasVisitedProjects(visitedProjects)
+
+        setHasVisitedAbout(sessionStorage.getItem(VISITED_STORAGE_KEYS.about) === 'true');
+        setHasVisitedProjects(sessionStorage.getItem(VISITED_STORAGE_KEYS.projects) === 'true');
+        setHasVisitedContact(sessionStorage.getItem(VISITED_STORAGE_KEYS.contact) === 'true');
+        setHasVisitedHome(sessionStorage.getItem(VISITED_STORAGE_KEYS.home) === 'true');
+        setIsSessionReady(true);
+    }, []);
+
+    const markVisited = useCallback((page: VisitedPage) => {
+        if (typeof window === 'undefined' || !window.sessionStorage) return;
+
+        switch (page) {
+            case 'about':
+                sessionStorage.setItem(VISITED_STORAGE_KEYS.about, 'true');
+                setHasVisitedAbout(true);
+                break;
+            case 'projects':
+                sessionStorage.setItem(VISITED_STORAGE_KEYS.projects, 'true');
+                setHasVisitedProjects(true);
+                break;
+            case 'contact':
+                sessionStorage.setItem(VISITED_STORAGE_KEYS.contact, 'true');
+                setHasVisitedContact(true);
+                break;
+            case 'home':
+                sessionStorage.setItem(VISITED_STORAGE_KEYS.home, 'true');
+                setHasVisitedHome(true);
+                break;
         }
-        if (visitedContact !== hasVisitedContact){
-            setHasVisitedContact(visitedContact)
-        }
-        if (visitedHome !== hasVisitedHome){
-            setHasVisitedHome(visitedHome)
-        }
-    }, [path]);
+    }, []);
 
     return (
         <SessionContext.Provider
@@ -63,6 +84,8 @@ export function SessionProvider({ children,}: { children: ReactNode,}) {
                 hasVisitedProjects,
                 hasVisitedContact,
                 hasVisitedHome,
+                isSessionReady,
+                markVisited,
             }}
         >
             {children}

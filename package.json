@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "codex": "^0.2.3",
     "daisyui": "^5.0.46",
     "next": "15.3.5",
     "react": "^19.0.0",
