@@ -62,14 +62,14 @@ export default function Home() {
                 duration: 0.9,
                 opacity: 0,
                 y: 20,
-                stagger: 0.07,
+                stagger: 0.1,
                 ease: "power2.out",
               }, "-=0.1")
               .fromTo(buttons, {opacity: 0, scale: 0.95}, {
                 scale: 1,
                 opacity: 1,
                 duration: 0.7,
-                stagger: 0.35,
+                stagger: 0.5,
                 ease: "back.out(1.7)",
               }, "-=0.1");
           }, root);
