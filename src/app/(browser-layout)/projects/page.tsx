@@ -11,28 +11,33 @@ export interface PageProps{
 
 export default function ProjectsPage() {
     const { loading } = usePageContext()
-    const { hasVisitedProjects } = useSessionContext();
-    const [isFirstVisit, setIsFirstVisit] = useState(!hasVisitedProjects);
+    const { hasVisitedProjects, isSessionReady, markVisited } = useSessionContext();
+    const [isFirstVisit, setIsFirstVisit] = useState(false);
+    const [hasResolvedVisit, setHasResolvedVisit] = useState(false);
 
     useEffect(() => {
-        if (typeof window === "undefined") return;
+        if (!isSessionReady || hasResolvedVisit) return;
 
         if (!hasVisitedProjects) {
-            sessionStorage.setItem("hasVisitedProjects", "true");
+            setIsFirstVisit(true);
+            markVisited('projects');
         }else{
             setIsFirstVisit(false);
         }
 
-    }, []);
+        setHasResolvedVisit(true);
+    }, [hasResolvedVisit, hasVisitedProjects, isSessionReady, markVisited]);
+
+    const showInitialLoader = !hasResolvedVisit || (loading && isFirstVisit);
 
     return (
         <>
             <div className="hidden md:block">
-                <WindowProject loading={loading && isFirstVisit} />
+                <WindowProject loading={showInitialLoader} />
             </div>
 
             <div className="md:hidden block">
-                <PhoneProject loading={loading && isFirstVisit} />
+                <PhoneProject loading={showInitialLoader} />
             </div>
         </>
     );

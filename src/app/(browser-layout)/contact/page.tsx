@@ -77,23 +77,25 @@ export default function ContactPage() {
     };
 
     const { loading } = usePageContext();
-    const { hasVisitedContact } = useSessionContext();
-    const [isFirstVisit, setIsFirstVisit] = useState(!hasVisitedContact);
+    const { hasVisitedContact, isSessionReady, markVisited } = useSessionContext();
+    const [isFirstVisit, setIsFirstVisit] = useState(false);
+    const [hasResolvedVisit, setHasResolvedVisit] = useState(false);
 
     useEffect(() => {
-        if (typeof window === "undefined") return;
+        if (!isSessionReady || hasResolvedVisit) return;
 
         if (!hasVisitedContact) {
-            sessionStorage.setItem("hasVisitedContact", "true");
             setIsFirstVisit(true);
+            markVisited('contact');
         }else{
             setIsFirstVisit(false);
         }
 
-    }, []);
+        setHasResolvedVisit(true);
+    }, [hasResolvedVisit, hasVisitedContact, isSessionReady, markVisited]);
 
     useEffect(() => {
-        if (!isFirstVisit) return;
+        if (!isFirstVisit || loading) return;
         let email = SplitText.create(".contact", {type: "chars"})
         const timeline = gsap.timeline();
         timeline.fromTo(".email", {opacity: 0},
@@ -126,11 +128,13 @@ export default function ContactPage() {
         }
         
         return () => observer.disconnect();
-    }, [loading]);
+    }, [loading, isFirstVisit]);
+
+    const showInitialLoader = !hasResolvedVisit || (loading && isFirstVisit);
 
     return (
         <>
-            {loading && isFirstVisit ? (
+            {showInitialLoader ? (
                 <>
                     <span className="loading loading-spinner loading-xl md:block hidden"></span>
                     <span className="loading loading-ring loading-xl md:hidden"></span>

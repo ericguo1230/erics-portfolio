@@ -2,52 +2,63 @@
 import experiences from '@/app/about/content/content';
 import { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
-import { usePageContext } from '@/app/contexts/PageInfoContext';
 import { useSessionContext } from '@/app/contexts/SessionContext';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 gsap.registerPlugin(ScrollToPlugin);
 
 export default function About() {
-    const { path } = usePageContext();
     const [ checkedItems, setCheckedItems ] = useState<boolean[]>(
         new Array(experiences.length).fill(false)
     );
     const listRef = useRef<HTMLUListElement>(null);
     const [ activeIdx, setActiveIdx ] = useState<number>(0);
-    const { hasVisitedAbout } = useSessionContext();
-    const [isFirstVisit, setIsFirstVisit] = useState(!hasVisitedAbout);
+    const { hasVisitedAbout, isSessionReady, markVisited } = useSessionContext();
+    const [isFirstVisit, setIsFirstVisit] = useState(false);
+    const hasResolvedVisit = useRef(false);
+    const hasTriggeredIntroAnimation = useRef(false);
 
     useEffect(() => {
-        if (typeof window === "undefined") return;
+        if (!isSessionReady || hasResolvedVisit.current) return;
+        hasResolvedVisit.current = true;
+
         if (!hasVisitedAbout) {
-            sessionStorage.setItem("hasVisitedAbout", "true");
             setIsFirstVisit(true);
+            markVisited('about');
         }else{
             setIsFirstVisit(false);
         }
 
-    }, []);
+    }, [hasVisitedAbout, isSessionReady, markVisited]);
 
     useEffect(() => {
-        if (!hasVisitedAbout && isFirstVisit) {
-            gsap.fromTo(".experience-item", {opacity: 0},
-                {
-                scale: 1,
-                opacity: 1,
-                duration: 1,
-                stagger: -0.75,
-                y: -20,
-                ease: "back.out(1.7)",
-            });
-            window.scrollTo(0, document.body.scrollHeight);
-            gsap.to(window, {
-                scrollTo: {y: 0},
-                duration: 6,
-                ease: "power2.inOut",
-            })
+        if (isFirstVisit && !hasTriggeredIntroAnimation.current) {
+            hasTriggeredIntroAnimation.current = true;
+            const isMobile = window.matchMedia('(max-width: 767px)').matches;
+            const ctx = gsap.context(() => {
+                gsap.fromTo(".experience-item", { opacity: 0, y: 16 },
+                    {
+                    opacity: 1,
+                    duration: isMobile ? 0.45 : 1,
+                    stagger: isMobile ? -0.35 : -0.5,
+                    y: 0,
+                    ease: isMobile ? "power2.out" : "back.out(1.7)",
+                });
+
+                window.scrollTo(0, document.body.scrollHeight);
+                gsap.to(window, {
+                    scrollTo: {y: 0},
+                    duration: isMobile ? 3 : 4,
+                    ease: "power2.inOut",
+                });
+            }, listRef);
+
+            return () => {
+                gsap.killTweensOf(window);
+                ctx.revert();
+            };
         }
-    }, [path]);
+    }, [isFirstVisit]);
 
 
     const handleToggle = (idx: number, isChecked: boolean) => {

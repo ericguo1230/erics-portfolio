@@ -12,8 +12,12 @@ export default function Resume() {
                         <span className="loading loading-ring loading-xl md:hidden"></span>
                     </>
                 ) : (
-                    <div className="items-center justify-items-center md:w-200 md:h-150 overflow-auto w-90 h-150">
-                        <iframe src="Eric-Resume.pdf" className="h-full w-full" />
+                    <div className="w-[calc(100vw-5rem)] max-w-80 h-[calc(100dvh-13rem)] max-h-[34rem] min-h-96 md:w-200 md:h-150 md:max-w-none md:max-h-none overflow-hidden rounded-md border border-base-300 bg-base-100">
+                        <iframe
+                            src="/Eric-Resume.pdf#view=FitH"
+                            title="Eric Guo Resume"
+                            className="h-full w-full"
+                        />
                     </div>
                 )}
         </>
