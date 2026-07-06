@@ -39,7 +39,7 @@ export default function About() {
                 gsap.fromTo(".experience-item", { opacity: 0, y: 16 },
                     {
                     opacity: 1,
-                    duration: isMobile ? 0.75 : 1,
+                    duration: isMobile ? 1 : 2,
                     stagger: isMobile ? -0.4 : -0.5,
                     y: 0,
                     ease: isMobile ? "power2.out" : "back.out(1.7)",
@@ -48,7 +48,7 @@ export default function About() {
                 window.scrollTo(0, document.body.scrollHeight);
                 gsap.to(window, {
                     scrollTo: {y: 0},
-                    duration: isMobile ? 5 : 7,
+                    duration: isMobile ? 4 : 5.5,
                     ease: "power2.inOut",
                 });
             }, listRef);
