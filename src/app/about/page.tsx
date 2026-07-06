@@ -39,8 +39,8 @@ export default function About() {
                 gsap.fromTo(".experience-item", { opacity: 0, y: 16 },
                     {
                     opacity: 1,
-                    duration: isMobile ? 1 : 2,
-                    stagger: isMobile ? -0.4 : -0.5,
+                    duration: isMobile ? 1 : 1.5,
+                    stagger: isMobile ? -0.5 : -0.75,
                     y: 0,
                     ease: isMobile ? "power2.out" : "back.out(1.7)",
                 });
