@@ -4,14 +4,14 @@ import Link from "next/link";
 
 interface ButtonProps {
     button: string;
-    ref: string;
+    href: string;
     content: string;
     img?: string;
     isNew?: boolean;
     internal?: boolean;
 }
 
-export default function Button({button, ref, content, img, isNew = false, internal = false }: ButtonProps) {
+export default function Button({button, href, content, img, isNew = false, internal = false }: ButtonProps) {
 
     const btnRef = useRef<HTMLAnchorElement>(null);
 
@@ -31,23 +31,21 @@ export default function Button({button, ref, content, img, isNew = false, intern
         <>
             {!internal ? (<a
                 ref={btnRef}
-                href={ref}
+                href={href}
                 className={`${button} btn btn-primary hover:btn-success`}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                target={`${isNew ? '' : '_blank'}`}
-                rel="noopener noreferrer"
+                target={isNew ? '_blank' : undefined}
+                rel={isNew ? 'noopener noreferrer' : undefined}
             >
                 {content}
             </a>) : (
                 <Link
                     ref={btnRef}
-                    href={ref}
+                    href={href}
                     className={`${button} btn btn-primary hover:btn-success`}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
-                    target={`${isNew ? '' : '_blank'}`}
-                    rel="noopener noreferrer"
                 >
                     {content}
                 </Link>

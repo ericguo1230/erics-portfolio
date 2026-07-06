@@ -103,14 +103,14 @@ export default function WindowProject({ loading }: PageProps) {
                     </div>
 
                     {project.languages && (
-                      <div className="text-start text-accent text-bg-base">
+                      <div className="text-start text-accent">
                         Languages:{' '}
                         {project.languages.map((lang, langIdx) => (
                           <div
                             className={`badge ${
                               language_to_color[lang.toLowerCase()]
                                 ? language_to_color[lang.toLowerCase()]
-                                : 'primary'
+                                : 'badge-primary'
                             } mr-2`}
                             key={projects.length + langIdx}
                           >

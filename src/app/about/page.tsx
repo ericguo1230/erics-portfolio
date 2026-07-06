@@ -126,14 +126,14 @@ export default function About() {
                                     src = {exp.logo}
                                 />
                                 <h1 className="font-bold text-2xl pt-2">{exp.company}</h1>
-                                <div className="text-m font-semibold">{exp.role}</div>
-                                {!checkedItems[idx] && <div className="text-sm peer-checketext-warning">{exp.summary}</div>}
+                                <div className="text-base font-semibold">{exp.role}</div>
+                                {!checkedItems[idx] && <div className="text-sm text-warning">{exp.summary}</div>}
                             </div>
                             
                             <div className='collapse-content text-sm font-mono peer-checked:bg-base-100 mt-2'>
                                 {exp.details.map((detail, detailIdx) => (
                                     <p key={detailIdx} className="inline-flex mb-1 text-base-content">
-                                        <span className="text-success text-m mr-2">
+                                        <span className="text-success text-base mr-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
                                                 <circle cx="6" cy="14" r="2" fill="currentColor"/>
                                                 <circle cx="14" cy="6" r="2" fill="currentColor"/>
