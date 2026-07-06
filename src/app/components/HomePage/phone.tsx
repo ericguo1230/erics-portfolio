@@ -19,13 +19,13 @@ export default function PhoneHome({ loading, intro, button, title }: HomeProps) 
                     />
                     <h1 className="text-3xl font-bold mb-2 underline text-success">{title}</h1>
                 </div>
-                <p className="intro text-m text-base-content mb-2 mt-2">
+                <p className="intro text-base text-base-content mb-2 mt-2">
                     {intro}
                 </p>
-                <div className="flex justify-center gap-1 m-2">
-                    <Button button={button} ref="/contact" content="Contact Me!"  isNew={true} internal={true}/>
-                    <Button button={button} ref="/resume" content="Resume" isNew={true} internal={true} />
-                    <Button button={button} ref="/fun_facts" content="Learn More!" isNew={true} internal={true}/>
+                <div className="flex flex-wrap justify-center gap-2 m-2">
+                    <Button button={button} href="/contact" content="Contact Me!" internal={true}/>
+                    <Button button={button} href="/resume" content="Resume" internal={true} />
+                    <Button button={button} href="/fun_facts" content="Learn More!" internal={true}/>
                 </div>
             </div>}
         </>

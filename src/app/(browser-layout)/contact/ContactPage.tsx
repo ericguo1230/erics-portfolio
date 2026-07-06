@@ -15,8 +15,8 @@ const WindowHomePage = ({
 
   return (
     <div className="flex flex-col h-full w-full gap-5 md:gap-0">
-      <div className="email flex-grow justify-start items-start w-full p-6 bg-neutral md:p-10 rounded-xl shadow-xl hover:bg-info transition-colors duration-200 text-neutral-content hover:text-info-content">
-        <h1 className="text-xl md:text-5xl font-bold mb-6">
+      <div className="email flex-grow justify-start items-start w-full max-w-full p-4 bg-neutral md:p-10 rounded-xl shadow-xl hover:bg-info transition-colors duration-200 text-neutral-content hover:text-info-content">
+        <h1 className="text-base sm:text-xl md:text-5xl font-bold mb-6 break-all md:break-normal">
           <a 
             href="mailto:ericc.guo@mail.utoronto.ca"
             className="hover:text-neutral-content transition-colors cursor-pointer contact"
